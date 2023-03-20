@@ -105,7 +105,7 @@ export default function Navbar() {
           </MobileMenu>
           <Navlist>
             <Li><NavItems href="/">Inicio</NavItems></Li>
-            <Li><NavItems href="/">Sobre nós</NavItems></Li>
+            <Li><NavItems href="/AboutUs">Sobre nós</NavItems></Li>
             <Li><NavItems href="/">Animais para adoção</NavItems></Li>
             <Li><NavItems href="/"><RiWhatsappFill /></NavItems></Li>
             <Li><NavItems href="facebook.com/SPAdeCampoLargoPR" target={'_blank'}><BsFacebook /></NavItems></Li>
