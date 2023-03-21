@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { RiWhatsappFill } from 'react-icons/ri';
 import { BsFacebook } from 'react-icons/bs';
 import { GrInstagram } from 'react-icons/gr';
-
+import { MdOutlinePets } from 'react-icons/md';
 import apaclLogoImage from '../../assets/APACL.png';
 
 
@@ -94,7 +94,7 @@ export default function Navbar() {
       <header>
         <Nav>
           <Img src={apaclLogoImage} />
-          <Logo>A.P.A.C.L</Logo>
+          <Logo>A.P.A.C.L <MdOutlinePets /></Logo>
           <MobileMenu>
             <MobileItems></MobileItems>
             <MobileItems></MobileItems>
