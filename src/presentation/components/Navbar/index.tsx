@@ -1,9 +1,11 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import styled from 'styled-components';
+
 import { RiWhatsappFill } from 'react-icons/ri';
 import { BsFacebook } from 'react-icons/bs';
 import { GrInstagram } from 'react-icons/gr';
 import { MdOutlinePets } from 'react-icons/md';
+import { TfiMenu } from 'react-icons/tfi'
 import apaclLogoImage from '../../assets/APACL.png';
 
 
@@ -46,6 +48,8 @@ const Logo = styled.div`
 const MobileMenu = styled.div`
   cursor: pointer;
   opacity: 0;
+  color: #fff;
+  
   @media (max-width: 999px) {
     display: block;
     opacity: 100;
@@ -89,22 +93,42 @@ const Navlist = styled.ul`
 `;
 
 export default function Navbar() {
+  const [isVisable, setIsVisable] = useState(false);
+
+
+  const changeMobileMenuVisibility = (): void => {
+    if (isVisable) {
+      setIsVisable(false)
+      console.log(isVisable)
+    } else {
+      setIsVisable(true)
+      console.log(isVisable)
+    }
+  }
+
+
+
+
+
   return (
     <Fragment>
       <header>
         <Nav>
           <Img src={apaclLogoImage} />
           <Logo>A.P.A.C.L <MdOutlinePets /></Logo>
-          <MobileMenu>
-            <MobileItems></MobileItems>
-            <MobileItems></MobileItems>
-            <MobileItems></MobileItems>
-            <MobileItems></MobileItems>
-            <MobileItems></MobileItems>
-            <MobileItems></MobileItems>
+          <MobileMenu onClick={changeMobileMenuVisibility}> <TfiMenu style={{ width: "100px" }} />
+            {isVisable &&
+
+              <MobileItems>Castanha do pará</MobileItems> &&
+              <MobileItems>castanha do CU</MobileItems> &&
+              <MobileItems></MobileItems> &&
+              <MobileItems></MobileItems> &&
+              <MobileItems></MobileItems> &&
+              <MobileItems></MobileItems>
+            }
           </MobileMenu>
           <Navlist>
-            <Li><NavItems href="/">Inicio</NavItems></Li>
+            <Li><NavItems href="/"> Inicio </NavItems></Li>
             <Li><NavItems href="/AboutUs">Sobre nós</NavItems></Li>
             <Li><NavItems href="/">Animais para adoção</NavItems></Li>
             <Li><NavItems href="/"><RiWhatsappFill /></NavItems></Li>

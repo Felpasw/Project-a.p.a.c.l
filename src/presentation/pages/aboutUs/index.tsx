@@ -1,15 +1,18 @@
-import { Fragment, useState } from 'react';
+import { Fragment, ReactNode, useState } from 'react';
 import styled from 'styled-components';
 import Navbar from '../../components/Navbar';
+import { motion } from 'framer-motion';
+
 import apaclInfo from '../../assets/APACLinfo.png';
+
 import { IoIosPaper } from 'react-icons/io';
 import { TbVaccine } from 'react-icons/tb';
 import { RiSurveyFill } from 'react-icons/ri'
 import { FaBriefcaseMedical } from 'react-icons/fa';
-import { MdOutlinePermContactCalendar } from 'react-icons/md';
 import { RiContactsFill } from 'react-icons/ri';
-import { AnimatePresence, motion } from 'framer-motion';
 
+
+import * as textContent from '../../text-content/index';
 
 const Img = styled.img`
 
@@ -30,43 +33,100 @@ const Info = styled.h1`
   padding-top: 10px;
 `;
 
-
-
-
-
 const Infos = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
 
 `;
-const Atendimento = styled.div`
-  display: flex;
-`;
-export default function AboutUs() {
-  const [isVisible, setIsVisable] = useState([false, false, false, false, false]);
 
-  const changeVisibility = (BA: boolean, i: number): void => {
-    if (isVisible[i]) {
-    }
 
-  }
+const informationList = [
+  {
+    id: "0",
+    text: "Vacinas",
+    icon: <TbVaccine />,
+    subtext: "Vacinas"
+  },
+  {
+    id: "1",
+    text: "Consultas",
+    icon: <IoIosPaper />,
+    subtext: "Vacinas"
+  },
+  {
+    id: "2",
+    text: "Procedimentos Cirúrgicos",
+    icon: <RiSurveyFill />,
+    subtext: "Vacinas"
+  },
+  {
+    id: "3",
+    text: "Atendimento",
+    icon: <FaBriefcaseMedical />,
+    subtext: "Vacinas"
+  },
+  {
+    id: "4",
+    text: "Contato",
+    icon: <RiContactsFill />,
+    subtext: "Vacinas"
+  },
+
+]
+
+
+const AboutUsText = styled.div`
+  font-family: system-ui, 
+  -apple-system, 
+  BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 
+  Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', 
+  sans-serif;
+  text-align: center;
+`
+
+function AccordionItem({ text, subtext, icon }: { text: string, subtext: string, icon: ReactNode }) {
+  const [isOpened, setValue] = useState(false);
+  const toggle = () => setValue((state) => !state);
+
+  return (
+    <div>
+      <Info onClick={toggle}>{text} {icon}</Info>
+      {isOpened && <p>{subtext}</p>}
+    </div>
+  );
 }
 
-return (
-  <Fragment>
-    <Navbar />
-    <Infos>
-      <Info onClick={changeVisibility(isVisible[0], 0)}>Consultas <IoIosPaper /></Info>
-      <br />
-      <Info onClick={changeVisibility(isVisible[1], 1)}>Vacinas <TbVaccine /></Info>
-      <br />
-      <Info onClick={changeVisibility(isVisible[2], 2)}>Procedimentos Cirúrgicos <RiSurveyFill /></Info>
-      <br />
-      <Info onClick={changeVisibility(isVisible[3], 3)}>Atendimento <FaBriefcaseMedical /></Info>
-      <Info onClick={changeVisibility(isVisible[4], 4)}>Contato <RiContactsFill /> </Info>
-    </Infos>
-    <Img src={apaclInfo} />
-  </Fragment>
-)
+
+
+export default function AboutUs() {
+  const parent = {
+    variantA: { scale: 1 },
+    variantB: { scale: 1.10 }
+
+  }
+
+
+
+
+
+  return (
+    <Fragment>
+      <Navbar />
+      <Infos>
+        <AboutUsText>
+          {textContent.AboutUsText}
+        </AboutUsText>
+        {informationList.map((information) =>
+          <motion.div
+            variants={parent}
+            initial="variantA"
+            whileHover="variantB">
+            <AccordionItem text={information.text} subtext={information.subtext} icon={information.icon} />
+          </motion.div>
+        )}
+      </Infos>
+      <Img src={apaclInfo} />
+    </Fragment >
+  )
 }
