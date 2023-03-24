@@ -6,8 +6,9 @@ import { BsFacebook } from 'react-icons/bs';
 import { GrInstagram } from 'react-icons/gr';
 import { MdOutlinePets } from 'react-icons/md';
 import { TfiMenu } from 'react-icons/tfi'
+import { AiOutlineClose } from 'react-icons/ai'
 import apaclLogoImage from '../../assets/APACL.png';
-
+import { AnimatePresence, motion } from 'framer-motion';
 
 
 const Nav = styled.nav`
@@ -32,6 +33,10 @@ const Li = styled.li`
 const Img = styled.img`
   height: 90px;
   width: auto;
+  
+  @media (max-width: 999px) {
+    margin-left: 10%;
+  }
 `;
 
 const Logo = styled.div`
@@ -41,13 +46,13 @@ const Logo = styled.div`
   color: #ffff;
   padding-right: 6ch;
   position: relative;
-  right: 50px;
-
+  right: auto;
+  
 `;
 
-const MobileMenu = styled.div`
+const MobileMenu = styled.b`
   cursor: pointer;
-  opacity: 0;
+  display: none;
   color: #fff;
   
   @media (max-width: 999px) {
@@ -64,46 +69,40 @@ const NavItems = styled.a`
     opacity: 0.7;
   }
   @media (max-width: 999px) {
-    margin left: 0;
+    
   }
-`;
-
-const MobileItems = styled.div`
-  width: 32px;
-  height: 2px;
-  background: #fff;
-  margin: 8px;
 `;
 
 const Navlist = styled.ul`
   list-style: none;
   display: flex;
-  @media (max-width: 999px) {
+`;
+
+const NavlistMobile = styled.ul`
+      display: flex;
+      list-style: none;
       position: absolute;
-      top: 8vh;
-      right: 0;
-      width: 50vw;
+      top: 15vh;
+      right: 0px;
+      width: 50vh;
       height: 92vh;
       background-color: #23232e ;
       flex-direction: column;
       align-items: center;
       justify-content: space-around;
-      transform: translate(100%);
-    }
-`;
+      float: right;
+`
+
+
 
 export default function Navbar() {
-  const [isVisable, setIsVisable] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+
 
 
   const changeMobileMenuVisibility = (): void => {
-    if (isVisable) {
-      setIsVisable(false)
-      console.log(isVisable)
-    } else {
-      setIsVisable(true)
-      console.log(isVisable)
-    }
+    setIsVisible(!isVisible);
+    console.log(isVisible)
   }
 
 
@@ -115,27 +114,34 @@ export default function Navbar() {
       <header>
         <Nav>
           <Img src={apaclLogoImage} />
-          <Logo>A.P.A.C.L <MdOutlinePets /></Logo>
-          <MobileMenu onClick={changeMobileMenuVisibility}> <TfiMenu style={{ width: "100px" }} />
-            {isVisable &&
+          <Logo> A.P.A.C.L<MdOutlinePets /></Logo>
+          <AnimatePresence>
+            {window.innerWidth < 999 && isVisible && (
+              <><motion.div
+                key="modal"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }} /><NavlistMobile>
+                  <Li><NavItems href="/"> Inicio </NavItems></Li>
+                  <Li><NavItems href="/AboutUs">Sobre nós</NavItems></Li>
+                  <Li><NavItems href="/">Animais para adoção</NavItems></Li>
+                  <Li><NavItems href="/"><RiWhatsappFill /></NavItems></Li>
+                  <Li><NavItems href="facebook.com/SPAdeCampoLargoPR" target={'_blank'}><BsFacebook /></NavItems></Li>
+                  <Li><NavItems href="/"><GrInstagram /></NavItems></Li>
 
-              <MobileItems>Castanha do pará</MobileItems> &&
-              <MobileItems>castanha do CU</MobileItems> &&
-              <MobileItems></MobileItems> &&
-              <MobileItems></MobileItems> &&
-              <MobileItems></MobileItems> &&
-              <MobileItems></MobileItems>
-            }
-          </MobileMenu>
-          <Navlist>
+                </NavlistMobile></>
+            )}
+          </AnimatePresence>
+          {window.innerWidth > 999 && <Navlist>
             <Li><NavItems href="/"> Inicio </NavItems></Li>
             <Li><NavItems href="/AboutUs">Sobre nós</NavItems></Li>
             <Li><NavItems href="/">Animais para adoção</NavItems></Li>
             <Li><NavItems href="/"><RiWhatsappFill /></NavItems></Li>
             <Li><NavItems href="facebook.com/SPAdeCampoLargoPR" target={'_blank'}><BsFacebook /></NavItems></Li>
             <Li><NavItems href="/"><GrInstagram /></NavItems></Li>
+          </Navlist>}
 
-          </Navlist>
+          <MobileMenu onClick={changeMobileMenuVisibility}> <TfiMenu /> </MobileMenu>
         </Nav>
       </header>
       <main></main>
