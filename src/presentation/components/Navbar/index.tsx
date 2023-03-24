@@ -50,7 +50,8 @@ const Logo = styled.div`
   
 `;
 
-const MobileMenu = styled.b`
+const MobileMenu = styled.div`
+  
   cursor: pointer;
   display: none;
   color: #fff;
@@ -68,17 +69,14 @@ const NavItems = styled.a`
   &:hover {
     opacity: 0.7;
   }
-  @media (max-width: 999px) {
-    
-  }
+
 `;
+
 
 const Navlist = styled.ul`
-  list-style: none;
-  display: flex;
-`;
-
-const NavlistMobile = styled.ul`
+    list-style: none;
+    display: flex;
+    @media (max-width: 999px) {
       display: flex;
       list-style: none;
       position: absolute;
@@ -91,6 +89,8 @@ const NavlistMobile = styled.ul`
       align-items: center;
       justify-content: space-around;
       float: right;
+  }
+      
 `
 
 
@@ -121,7 +121,7 @@ export default function Navbar() {
                 key="modal"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }} /><NavlistMobile>
+                exit={{ opacity: 0 }} /><Navlist>
                   <Li><NavItems href="/"> Inicio </NavItems></Li>
                   <Li><NavItems href="/AboutUs">Sobre nós</NavItems></Li>
                   <Li><NavItems href="/">Animais para adoção</NavItems></Li>
@@ -129,7 +129,7 @@ export default function Navbar() {
                   <Li><NavItems href="facebook.com/SPAdeCampoLargoPR" target={'_blank'}><BsFacebook /></NavItems></Li>
                   <Li><NavItems href="/"><GrInstagram /></NavItems></Li>
 
-                </NavlistMobile></>
+                </Navlist></>
             )}
           </AnimatePresence>
           {window.innerWidth > 999 && <Navlist>

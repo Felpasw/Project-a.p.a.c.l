@@ -1,9 +1,10 @@
 import { Fragment, ReactNode, useState } from 'react';
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 import Navbar from '../../components/Navbar';
 import { motion } from 'framer-motion';
 
 import apaclInfo from '../../assets/APACLinfo.png';
+import apaclLogoImage from '../../assets/APACL.png';
 
 import { IoIosPaper } from 'react-icons/io';
 import { TbVaccine } from 'react-icons/tb';
@@ -12,13 +13,19 @@ import { FaBriefcaseMedical } from 'react-icons/fa';
 import { RiContactsFill } from 'react-icons/ri';
 
 
+
+
 import * as textContent from '../../text-content/index';
 
 const Img = styled.img`
-
-
+  margin-left: 40px;
+  width: 300px;
 `;
-
+const Div = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+`
 const Info = styled.h1`
   transition: 0.3s;
   cursor: pointer;
@@ -39,38 +46,36 @@ const Infos = styled.div`
   flex-direction: column;
 
 `;
-
+const Service = styled.div`
+  border-radius: 20px;
+  border-style: solid;
+`
 
 const informationList = [
   {
-    id: "0",
     text: "Vacinas",
     icon: <TbVaccine />,
-    subtext: "Vacinas"
+    subtext: <Service> {textContent.Services}</Service>
   },
   {
-    id: "1",
     text: "Consultas",
     icon: <IoIosPaper />,
-    subtext: "Vacinas"
+    subtext: <Service> {textContent.Services}</Service>
   },
   {
-    id: "2",
-    text: "Procedimentos Cirúrgicos",
+    text: "Cirurgias",
     icon: <RiSurveyFill />,
-    subtext: "Vacinas"
+    subtext: <Service> {textContent.Services}</Service>
   },
   {
-    id: "3",
     text: "Atendimento",
     icon: <FaBriefcaseMedical />,
-    subtext: "Vacinas"
+    subtext: <Service> {textContent.Services}</Service>
   },
   {
-    id: "4",
     text: "Contato",
     icon: <RiContactsFill />,
-    subtext: "Vacinas"
+    subtext: <Service> {textContent.Services}</Service>
   },
 
 ]
@@ -85,13 +90,13 @@ const AboutUsText = styled.div`
   text-align: center;
 `
 
-function AccordionItem({ text, subtext, icon }: { text: string, subtext: string, icon: ReactNode }) {
+function AccordionItem({ text, subtext, icon }: { text: string, subtext: JSX.Element, icon: ReactNode }) {
   const [isOpened, setValue] = useState(false);
   const toggle = () => setValue((state) => !state);
 
   return (
     <div>
-      <Info onClick={toggle}>{text} {icon}</Info>
+      <Info onClick={toggle} style={{ "marginRight": "3px" }}>{text} {icon}</Info>
       {isOpened && <p>{subtext}</p>}
     </div>
   );
@@ -108,11 +113,12 @@ export default function AboutUs() {
 
 
 
-
-
   return (
     <Fragment>
       <Navbar />
+      <Div>
+        <Img src={apaclLogoImage} alt="" />
+      </Div>
       <Infos>
         <AboutUsText>
           {textContent.AboutUsText}
