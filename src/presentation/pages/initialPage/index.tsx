@@ -28,14 +28,12 @@ const Title = styled.h1`
 const Div = styled.div`
   display: flex;
   flex-direction: row;
-
+  max-width: 100%;
 `
 const Img = styled.img` 
-
-  @media (max-width: 999px) {
-   
-    
-  }
+  padding: auto;
+  margin: auto;
+  max-width: 100%;
 `
 const Subtitle = styled.h2`
   font-size: 10px;
@@ -44,11 +42,13 @@ const Subtitle = styled.h2`
   BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 
   Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', 
   sans-serif;
+  max-width: 100%;
 `
 
 const Titles = styled.div`
   display: flex;
   flex-direction: column;
+  max-width: 100%;
 
 `
 const Button = styled.button`

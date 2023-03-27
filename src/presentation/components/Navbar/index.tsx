@@ -91,11 +91,18 @@ const Navlist = styled.ul`
   }
       
 `
-
+const SeeIfIsMobileOrNot = () => {
+  if (window.screen.width > 999) {
+    return true
+  }
+  else {
+    return false
+  }
+}
 
 
 export default function Navbar() {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(() => SeeIfIsMobileOrNot());
 
 
 
