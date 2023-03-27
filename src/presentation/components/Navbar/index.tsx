@@ -122,17 +122,19 @@ export default function Navbar() {
               <><motion.div
                 key="modal"
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-              /><Navlist>
+                animate={{ opacity: 1, }}
+                exit={{ opacity: 0 }} >
+                <Navlist>
                   <Li><NavItems href="/"> Inicio </NavItems></Li>
                   <Li><NavItems href="/AboutUs">Sobre nós</NavItems></Li>
                   <Li><NavItems href="/Adoption">Animais para adoção</NavItems></Li>
                   <Li><NavItems href="/"><RiWhatsappFill /></NavItems></Li>
                   <Li><NavItems href="facebook.com/SPAdeCampoLargoPR" target={'_blank'}><BsFacebook /></NavItems></Li>
                   <Li><NavItems href="/"><GrInstagram /></NavItems></Li>
+                </Navlist>
+              </motion.div>
+              </>
 
-                </Navlist></>
             )}
           </AnimatePresence>
           <MobileMenu onClick={changeMobileMenuVisibility}> <TfiMenu /> </MobileMenu>
