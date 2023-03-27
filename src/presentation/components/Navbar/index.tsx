@@ -6,7 +6,6 @@ import { BsFacebook } from 'react-icons/bs';
 import { GrInstagram } from 'react-icons/gr';
 import { MdOutlinePets } from 'react-icons/md';
 import { TfiMenu } from 'react-icons/tfi'
-import { AiOutlineClose } from 'react-icons/ai'
 import apaclLogoImage from '../../assets/APACL.png';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -102,12 +101,8 @@ export default function Navbar() {
 
   const changeMobileMenuVisibility = (): void => {
     setIsVisible(!isVisible);
-    console.log(isVisible)
+    console.log(isVisible);
   }
-
-
-
-
 
   return (
     <Fragment>
@@ -116,15 +111,16 @@ export default function Navbar() {
           <Img src={apaclLogoImage} />
           <Logo> A.P.A.C.L<MdOutlinePets /></Logo>
           <AnimatePresence>
-            {window.innerWidth < 999 && isVisible && (
+            {isVisible && (
               <><motion.div
                 key="modal"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }} /><Navlist>
+                exit={{ opacity: 0 }}
+              /><Navlist>
                   <Li><NavItems href="/"> Inicio </NavItems></Li>
                   <Li><NavItems href="/AboutUs">Sobre nós</NavItems></Li>
-                  <Li><NavItems href="/">Animais para adoção</NavItems></Li>
+                  <Li><NavItems href="/Adoption">Animais para adoção</NavItems></Li>
                   <Li><NavItems href="/"><RiWhatsappFill /></NavItems></Li>
                   <Li><NavItems href="facebook.com/SPAdeCampoLargoPR" target={'_blank'}><BsFacebook /></NavItems></Li>
                   <Li><NavItems href="/"><GrInstagram /></NavItems></Li>
@@ -132,19 +128,9 @@ export default function Navbar() {
                 </Navlist></>
             )}
           </AnimatePresence>
-          {window.innerWidth > 999 && <Navlist>
-            <Li><NavItems href="/"> Inicio </NavItems></Li>
-            <Li><NavItems href="/AboutUs">Sobre nós</NavItems></Li>
-            <Li><NavItems href="/">Animais para adoção</NavItems></Li>
-            <Li><NavItems href="/"><RiWhatsappFill /></NavItems></Li>
-            <Li><NavItems href="facebook.com/SPAdeCampoLargoPR" target={'_blank'}><BsFacebook /></NavItems></Li>
-            <Li><NavItems href="/"><GrInstagram /></NavItems></Li>
-          </Navlist>}
-
           <MobileMenu onClick={changeMobileMenuVisibility}> <TfiMenu /> </MobileMenu>
         </Nav>
       </header>
-      <main></main>
     </Fragment>
   )
 }

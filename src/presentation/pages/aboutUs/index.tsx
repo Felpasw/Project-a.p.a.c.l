@@ -8,14 +8,22 @@ import apaclLogoImage from '../../assets/APACL.png';
 
 import { IoIosPaper } from 'react-icons/io';
 import { TbVaccine } from 'react-icons/tb';
-import { RiSurveyFill } from 'react-icons/ri'
+import { RiSurveyFill, RiWhatsappFill } from 'react-icons/ri'
 import { FaBriefcaseMedical } from 'react-icons/fa';
 import { RiContactsFill } from 'react-icons/ri';
-
-
-
+import { AiFillPhone } from 'react-icons/ai';
 
 import * as textContent from '../../text-content/index';
+
+const AboutUsText = styled.div`
+  font-family: system-ui, 
+  -apple-system, 
+  BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 
+  Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', 
+  sans-serif;
+  text-align: center;
+`
+
 
 const Img = styled.img`
   margin-left: 40px;
@@ -44,6 +52,7 @@ const Infos = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  
 
 `;
 const Service = styled.div`
@@ -75,20 +84,13 @@ const informationList = [
   {
     text: "Contato",
     icon: <RiContactsFill />,
-    subtext: <Service> {textContent.Services}</Service>
+    subtext: <AboutUsText> <AiFillPhone /> {textContent.ContactNum1} <RiWhatsappFill /> {textContent.ContactNum2} </AboutUsText>
   },
 
 ]
 
 
-const AboutUsText = styled.div`
-  font-family: system-ui, 
-  -apple-system, 
-  BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 
-  Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', 
-  sans-serif;
-  text-align: center;
-`
+
 
 function AccordionItem({ text, subtext, icon }: { text: string, subtext: JSX.Element, icon: ReactNode }) {
   const [isOpened, setValue] = useState(false);
@@ -114,7 +116,7 @@ export default function AboutUs() {
 
 
   return (
-    <Fragment>
+    <div style={{ "overflow": "scroll;" }}>
       <Navbar />
       <Div>
         <Img src={apaclLogoImage} alt="" />
@@ -133,6 +135,6 @@ export default function AboutUs() {
         )}
       </Infos>
       <Img src={apaclInfo} />
-    </Fragment >
+    </div>
   )
 }
