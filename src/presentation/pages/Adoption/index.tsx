@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar';
 
 import { GiHollowCat } from "react-icons/gi";
 import { TbDog } from 'react-icons/tb';
+import Footer from '../../components/Footer';
 
 
 
@@ -49,6 +50,7 @@ export default function Adoption() {
           )
         }
       </Pets>
+      <Footer />
     </Fragment>
   )
 }

@@ -20,7 +20,8 @@ const Nav = styled.nav`
   Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', 
   sans-serif;
   background-color: #23232e;
-  height: 100px;
+  height: 100%;
+  width: 100%;
 `;
 
 const Li = styled.li`
@@ -79,7 +80,7 @@ const Navlist = styled.ul`
       display: flex;
       list-style: none;
       position: absolute;
-      top: 15vh;
+      top: 10.5vh;
       right: 0px;
       width: 50vh;
       height: 92vh;
@@ -112,34 +113,30 @@ export default function Navbar() {
   }
 
   return (
-    <Fragment>
-      <header>
-        <Nav>
-          <Img src={apaclLogoImage} />
-          <Logo> A.P.A.C.L<MdOutlinePets /></Logo>
-          <AnimatePresence>
-            {isVisible && (
-              <><motion.div
-                key="modal"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, }}
-                exit={{ opacity: 0 }} >
-                <Navlist>
-                  <Li><NavItems href="/"> Inicio </NavItems></Li>
-                  <Li><NavItems href="/AboutUs">Sobre nós</NavItems></Li>
-                  <Li><NavItems href="/Adoption">Animais para adoção</NavItems></Li>
-                  <Li><NavItems href="/"><RiWhatsappFill /></NavItems></Li>
-                  <Li><NavItems href="facebook.com/SPAdeCampoLargoPR" target={'_blank'}><BsFacebook /></NavItems></Li>
-                  <Li><NavItems href="/"><GrInstagram /></NavItems></Li>
-                </Navlist>
-              </motion.div>
-              </>
+    <Nav>
+      <Img src={apaclLogoImage} />
+      <Logo> A.P.A.C.L<MdOutlinePets /></Logo>
+      <AnimatePresence>
+        {isVisible && (
+          <><motion.div
+            key="modal"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, }}
+            exit={{ opacity: 0 }} >
+            <Navlist>
+              <Li><NavItems href="/"> Inicio </NavItems></Li>
+              <Li><NavItems href="/AboutUs">Informações</NavItems></Li>
+              <Li><NavItems href="/Adoption">Animais para adoção</NavItems></Li>
+              <Li><NavItems href="/"><RiWhatsappFill /></NavItems></Li>
+              <Li><NavItems href="facebook.com/SPAdeCampoLargoPR" target={'_blank'}><BsFacebook /></NavItems></Li>
+              <Li><NavItems href="/"><GrInstagram /></NavItems></Li>
+            </Navlist>
+          </motion.div>
+          </>
 
-            )}
-          </AnimatePresence>
-          <MobileMenu onClick={changeMobileMenuVisibility}> <TfiMenu /> </MobileMenu>
-        </Nav>
-      </header>
-    </Fragment>
+        )}
+      </AnimatePresence>
+      <MobileMenu onClick={() => { changeMobileMenuVisibility() }}> <TfiMenu /> </MobileMenu>
+    </Nav>
   )
 }

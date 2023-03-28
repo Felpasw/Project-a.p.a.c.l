@@ -3,7 +3,7 @@ import styled, { StyledComponent } from 'styled-components';
 import Navbar from '../../components/Navbar';
 import { motion } from 'framer-motion';
 
-import apaclInfo from '../../assets/APACLinfo.png';
+import CatImage from '../../assets/CatPetImage.png';
 import apaclLogoImage from '../../assets/APACL.png';
 
 import { IoIosPaper } from 'react-icons/io';
@@ -14,52 +14,60 @@ import { RiContactsFill } from 'react-icons/ri';
 import { AiFillPhone } from 'react-icons/ai';
 
 import * as textContent from '../../text-content/index';
+import Footer from '../../components/Footer';
 
 const AboutUsText = styled.div`
-  font-family: system-ui, 
-  -apple-system, 
-  BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 
-  Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', 
-  sans-serif;
   text-align: center;
+  max-width: 100%;
+  margin: auto;
+  padding: auto;
 `
-
-
 const Img = styled.img`
-  margin-left: 40px;
+  margin:auto;
   width: 300px;
+  max-width: 100%;
 `;
+const CatImageTag = styled.img`
+  margin: auto;
+  padding: auto;
+  max-width: 100%;
+  width: 250px;
+  @media (max-width: 999px) {
+    display: none;
+  }
+`
 const Div = styled.div`
   display: flex;
-  width: 100%;
+  max-width: 100%;
   align-items: center;
+  flex-direction: row;
+  padding: auto;
+  margin: auto;
+  @media (max-width: 999px) {
+    flex-direction: column;
+      overflow: scroll;
+  }
+
 `
 const Info = styled.h1`
   transition: 0.3s;
   cursor: pointer;
-  font-family: system-ui, 
-  -apple-system, 
-  BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 
-  Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', 
-  sans-serif;
   &:hover {
     opacity: 0.7;
   }
-  padding-top: 10px;
+  margin: 10px;
+  padding: auto;
 `;
-
 const Infos = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  
-
+  margin: auto;
+  padding: auto;
 `;
 const Service = styled.div`
-  border-radius: 20px;
-  border-style: solid;
+  transition: 3s;
 `
-
 const informationList = [
   {
     text: "Vacinas",
@@ -74,7 +82,7 @@ const informationList = [
   {
     text: "Cirurgias",
     icon: <RiSurveyFill />,
-    subtext: <Service> {textContent.Services}</Service>
+    subtext: <Div> {textContent.SurgeryInfo}</Div>
   },
   {
     text: "Atendimento",
@@ -116,25 +124,28 @@ export default function AboutUs() {
 
 
   return (
-    <div style={{ "overflow": "scroll;" }}>
+    <Fragment>
       <Navbar />
       <Div>
         <Img src={apaclLogoImage} alt="" />
+
+        <Infos>
+          <AboutUsText>
+            <h1>Sobre nós: </h1>
+            {textContent.AboutUsText}
+          </AboutUsText>
+          {informationList.map((information) =>
+            <motion.div
+              variants={parent}
+              initial="variantA"
+              whileHover="variantB">
+              <AccordionItem text={information.text} subtext={information.subtext} icon={information.icon} />
+            </motion.div>
+          )}
+        </Infos>
+        <CatImageTag src={CatImage} />
       </Div>
-      <Infos>
-        <AboutUsText>
-          {textContent.AboutUsText}
-        </AboutUsText>
-        {informationList.map((information) =>
-          <motion.div
-            variants={parent}
-            initial="variantA"
-            whileHover="variantB">
-            <AccordionItem text={information.text} subtext={information.subtext} icon={information.icon} />
-          </motion.div>
-        )}
-      </Infos>
-      <Img src={apaclInfo} />
-    </div>
+      <Footer />
+    </Fragment>
   )
 }
