@@ -4,13 +4,16 @@ import styled from 'styled-components';
 import PetImage from "../../assets/DogPetImage.png"
 import { motion } from 'framer-motion';
 import Footer from '../../components/Footer';
+import AboutUs from '../../components/AboutUs';
 
 
 
 
 
 const Title = styled.h1`
-  font-size: 20px;
+  max-width: 100%;
+  font-size: 5ch;
+  font-family: 'Work Sans', sans-serif;
   text-transform: uppercase;
   padding-right: 6ch;
   position: relative;
@@ -18,6 +21,7 @@ const Title = styled.h1`
   margin-right: 10%;
   padding-right: 10%;
   align-self: center;
+  color:  #23232e;
 `
 const Div = styled.div`
   display: flex;
@@ -28,6 +32,8 @@ const Img = styled.img`
   padding: auto;
   margin: auto;
   max-width: 100%;
+  background-color:rgb(0,255,171);
+  border-radius: 150%;
 `
 const Subtitle = styled.h2`
   font-size: 10px;
@@ -48,7 +54,7 @@ const Button = styled.button`
 
 export default function InitialPage() {
   return (
-    <Fragment>
+    <div style={{ "backgroundColor": "rgb(254,247,237)" }}>
       <Navbar />
       <Div>
         <Titles style={{ "margin": "auto" }}>
@@ -97,8 +103,9 @@ export default function InitialPage() {
           <Img src={PetImage} style={{ "alignSelf": "end", "margin": "auto" }} />
         </motion.div>
       </Div>
+      <AboutUs />
       <Footer />
-    </Fragment >
+    </div>
   );
 }
 

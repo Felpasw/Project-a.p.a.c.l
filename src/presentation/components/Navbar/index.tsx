@@ -125,7 +125,6 @@ export default function Navbar() {
             exit={{ opacity: 0 }} >
             <Navlist>
               <Li><NavItems href="/"> Inicio </NavItems></Li>
-              <Li><NavItems href="/AboutUs">Informações</NavItems></Li>
               <Li><NavItems href="/Adoption">Animais para adoção</NavItems></Li>
               <Li><NavItems href="/"><RiWhatsappFill /></NavItems></Li>
               <Li><NavItems href="facebook.com/SPAdeCampoLargoPR" target={'_blank'}><BsFacebook /></NavItems></Li>
