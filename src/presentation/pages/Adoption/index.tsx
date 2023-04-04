@@ -5,17 +5,25 @@ import Navbar from '../../components/Navbar';
 import { GiHollowCat } from "react-icons/gi";
 import { TbDog } from 'react-icons/tb';
 import Footer from '../../components/Footer';
+import { motion } from 'framer-motion';
 
 
 
 const Pets = styled.div`
   display: flex;
   align-items: row;
+  justify-content: space-around;
+  @media(max-width: 999px){
+    align-items: column;
+  }
 
 `
 const Card = styled.div`
-  border: 3px, solid, #4444;
-  border-radius: 2px;
+  border: 3px, #4444; 
+  border-style: solid;
+  border-radius:20px;
+  cursor: pointer;
+ 
 `
 const Title = styled.h1`
   display: flex;
@@ -33,14 +41,14 @@ const Title = styled.h1`
 
 const Petlist = [
   {
-    type: "Cat",
+    type: "Gato",
     icon: <GiHollowCat />,
     castrated: "Yes",
     Age: "Unknown",
     Vacines: ["Panleucopenia", "Rinotraqueíte", "Calicivirose"]
   },
   {
-    type: "Dog",
+    type: "Cachorro",
     icon: <TbDog />,
     castrated: "Yes",
     Age: "4 months",
@@ -53,6 +61,12 @@ const Petlist = [
 
 
 export default function Adoption() {
+  const parent = {
+    variantA: { scale: 1, opacity: 1 },
+    variantB: { scale: 1.10, opacity: 0.5, border: "3px, #4444" }
+
+  }
+
   return (
     <Fragment>
       <Navbar />
@@ -63,9 +77,19 @@ export default function Adoption() {
       <Pets>
         {
           Petlist.map((element) =>
-            <Card>
-              <h1>{element.type}</h1>{element.icon}
-            </Card>
+            <motion.div style={{
+              "border": "3px, #4444",
+              "borderStyle": "solid",
+              "cursor": "pointer",
+              "borderRadius": "20px",
+            }}
+              variants={parent}
+              initial="variantA"
+              whileHover="variantB">
+
+              <h1>{element.type}{element.icon}</h1>
+
+            </motion.div>
           )
         }
       </Pets>
