@@ -4,6 +4,7 @@ const Services = "Segunda à Sexta" + "\n" + "8h30 às 17h" + " Sábados" + "\n"
 const ContactNum1 = "41 3032-5205";
 const ContactNum2 = "41 99934-0673";
 const SurgeryInfo = "A clínica veterinária da Protetora dos Animais de Campo Largo oferece consultas, vacinas e cirurgias, facilitando o cuidado com o seu pet. Uma parte dos valores cobrados ajuda a custear o atendimento veterinário a animais abandonados."
-const Address = "Rua 21 de Abril, 45, Campo Largo, PR, Brazil, 83607-482";
-const Responsable = " Técnico Dr. Daniel Luis dos Anjos CRMV-PR 11.351"
-export { AboutUsText, Services, ContactNum1, ContactNum2, SurgeryInfo, Address, Responsable }  
+const Address = "Rua 21 de Abril 45, Campo Largo, 83607-482";
+const Responsable = " Técnico Dr. Daniel Luis dos Anjos CRMV-PR 11.351";
+const Email = "moresaadv@onda.com.br";
+export { Email, AboutUsText, Services, ContactNum1, ContactNum2, SurgeryInfo, Address, Responsable }  

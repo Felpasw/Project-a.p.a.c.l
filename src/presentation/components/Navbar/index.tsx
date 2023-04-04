@@ -20,15 +20,13 @@ const Nav = styled.nav`
   Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', 
   sans-serif;
   background-color: #23232e;
-  height: 100%;
   width: 100%;
+  position:fixed;
+  z-index: 1;
+
 `;
 
-const Li = styled.li`
-    letter-spacing: 3px;
-    margin-left: 32px;
-  
-`;
+
 
 const Img = styled.img`
   height: 90px;
@@ -82,7 +80,7 @@ const Navlist = styled.ul`
       position: absolute;
       top: 10.5vh;
       right: 0px;
-      width: 50vh;
+      width: auto;
       height: 92vh;
       background-color: #23232e ;
       flex-direction: column;
@@ -124,11 +122,47 @@ export default function Navbar() {
             animate={{ opacity: 1, }}
             exit={{ opacity: 0 }} >
             <Navlist>
-              <Li><NavItems href="/"> Inicio </NavItems></Li>
-              <Li><NavItems href="/Adoption">Animais para adoção</NavItems></Li>
-              <Li><NavItems href="/"><RiWhatsappFill /></NavItems></Li>
-              <Li><NavItems href="facebook.com/SPAdeCampoLargoPR" target={'_blank'}><BsFacebook /></NavItems></Li>
-              <Li><NavItems href="/"><GrInstagram /></NavItems></Li>
+              <motion.li style={{ "letterSpacing": "3px", "marginLeft": "32px" }}
+                initial={{ x: 0, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 300, opacity: 0 }}
+                transition={{ delay: 0, duration: 1.3 }}
+
+              >
+                <NavItems href="/"> Inicio </NavItems>
+              </motion.li>
+              <motion.li style={{ "letterSpacing": "3px", "marginLeft": "32px" }}
+                initial={{ x: 0, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 300, opacity: 0 }}
+                transition={{ delay: 1.3, duration: 1.3 }}
+              >
+                <NavItems href="/Adoption"> Animais para adoção </NavItems>
+              </motion.li>
+              <motion.li style={{ "letterSpacing": "3px", "marginLeft": "32px" }}
+                initial={{ x: 0, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 300, opacity: 0 }}
+                transition={{ delay: 1.8, duration: 1.3 }}
+              >
+                <NavItems href="/"><RiWhatsappFill /></NavItems>
+              </motion.li>
+              <motion.li style={{ "letterSpacing": "3px", "marginLeft": "32px" }}
+                initial={{ x: 0, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 300, opacity: 0 }}
+                transition={{ delay: 3.1, duration: 1.3 }}
+              >
+                <NavItems href="facebook.com/SPAdeCampoLargoPR" target={'_blank'}><BsFacebook /></NavItems>
+              </motion.li>
+              <motion.li style={{ "letterSpacing": "3px", "marginLeft": "32px" }}
+                initial={{ x: 0, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 300, opacity: 0 }}
+                transition={{ delay: 4.4, duration: 1.3 }}
+              >
+                <NavItems href="/"><GrInstagram /></NavItems>
+              </motion.li>
             </Navlist>
           </motion.div>
           </>

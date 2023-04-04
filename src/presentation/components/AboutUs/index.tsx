@@ -1,6 +1,6 @@
 import { Fragment, ReactNode, useState } from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import apaclLogoImage from '../../assets/APACL.png';
 import InfoCatImage from '../../assets/InfoCatImage.png';
@@ -25,9 +25,9 @@ const AboutUsText = styled.div`
 `
 const Img = styled.img`
   margin:auto;
-  width: 300px;
   max-width: 100%;
   float: center;
+  padding: auto;
 `;
 const CatImage2 = styled.img`
   margin:auto;
@@ -105,6 +105,11 @@ const AboutUsDiv = styled.div`
   margin: 120px;
   padding: auto;
   align-items: center;
+  @media (max-width: 999px) {
+    flex-direction: column;
+    
+  }
+
 `
 
 
@@ -146,8 +151,19 @@ function AccordionItem({ text, subtext, icon, Image }: { text: string, subtext: 
 
   return (
     <div>
-      <Info onClick={toggle} style={{ "marginRight": "3px" }}>{Image} <br />{text} {icon}</Info>
-      {isOpened && <p>{subtext}</p>}
+      <Info onClick={toggle} style={{ "marginRight": "3px" }}><div style={{ "textAlign": "center" }}>{Image} <br />{text} {icon} </div></Info>
+      {isOpened &&
+        <AnimatePresence>
+          <motion.div
+            initial={{ x: 300, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -300, opacity: 0 }}
+            transition={{ delay: 0.2, duration: 1.3 }}
+          >
+            <p>{subtext}</p>
+          </motion.div>
+        </AnimatePresence>
+      }
     </div>
   );
 }

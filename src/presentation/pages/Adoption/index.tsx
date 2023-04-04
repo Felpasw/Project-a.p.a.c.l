@@ -16,9 +16,20 @@ const Pets = styled.div`
 const Card = styled.div`
   border: 3px, solid, #4444;
   border-radius: 2px;
-
 `
-
+const Title = styled.h1`
+  display: flex;
+  align-self: center;
+  padding-top: 100px;
+  max-width: 100%;
+  margin: auto;
+  padding: auto;
+  font-size: 5ch;
+  font-family: 'Work Sans', sans-serif;
+  text-transform: uppercase;
+  right: auto;
+  color:  #23232e;
+`
 
 const Petlist = [
   {
@@ -37,10 +48,18 @@ const Petlist = [
   }
 ]
 
+
+
+
+
 export default function Adoption() {
   return (
     <Fragment>
       <Navbar />
+      <div style={{ "display": "flex" }}>
+        <Title>Animais para adoção</Title>
+      </div>
+
       <Pets>
         {
           Petlist.map((element) =>
