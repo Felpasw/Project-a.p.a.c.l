@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { BsPersonVcardFill } from 'react-icons/bs';
 import * as textContent from '../../text-content';
 import { AiOutlineWhatsApp, AiOutlinePhone } from 'react-icons/ai';
-
+import FooterDogImage from '../../assets/FooterDogImage.png'
 
 const FooterContent = styled.footer`
     display: flex;
@@ -32,7 +32,11 @@ const InfoContent = styled.h2`
   margin: 10px;
 
 `
-
+const Img = styled.img`
+  width: 40ch;
+  margin: auto;
+  padding: auto;
+`
 const Div = styled.div`
   display: flex;
   flex-direction: column;
@@ -68,6 +72,7 @@ export default function Footer() {
           <Subtitles>Campo Largo e Região metropolitana</Subtitles>
         </Div>
       </Infos>
+      <Img src={FooterDogImage} />
     </FooterContent>
   )
 }

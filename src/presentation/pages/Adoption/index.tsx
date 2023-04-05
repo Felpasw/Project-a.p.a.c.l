@@ -4,26 +4,32 @@ import Navbar from '../../components/Navbar';
 
 import { GiHollowCat } from "react-icons/gi";
 import { TbDog } from 'react-icons/tb';
+import { BsGenderMale, BsGenderFemale } from 'react-icons/bs';
+
+
 import Footer from '../../components/Footer';
 import { motion } from 'framer-motion';
-
-
+//images
+import DogF from '../../assets/AdoptionContent/DogF.png';
+import DogF2 from '../../assets/AdoptionContent/DogF2.png';
+import DogM from '../../assets/AdoptionContent/DogM.png';
+import DogM1 from '../../assets/AdoptionContent/DogM1.png';
+import DogM2 from '../../assets/AdoptionContent/DogM2.png';
+import DogM3 from '../../assets/AdoptionContent/DogM3.png';
+import DogM4 from '../../assets/AdoptionContent/DogM4.png';
+import DogM5 from '../../assets/AdoptionContent/DogM5.png';
 
 const Pets = styled.div`
   display: flex;
   align-items: row;
+  flex-direction: row;
+  flex-wrap: wrap; 
   justify-content: space-around;
   @media(max-width: 999px){
     align-items: column;
   }
 
-`
-const Card = styled.div`
-  border: 3px, #4444; 
-  border-style: solid;
-  border-radius:20px;
-  cursor: pointer;
- 
+
 `
 const Title = styled.h1`
   display: flex;
@@ -38,21 +44,69 @@ const Title = styled.h1`
   right: auto;
   color:  #23232e;
 `
+const Img = styled.img`
+  max-width: 100%;
+`
 
 const Petlist = [
   {
-    type: "Gato",
-    icon: <GiHollowCat />,
-    castrated: "Yes",
-    Age: "Unknown",
-    Vacines: ["Panleucopenia", "Rinotraqueíte", "Calicivirose"]
+    Type: "Cachorro",
+    Castrated: "Não",
+    Vacines: "Nenhuma",
+    Gender: "Feminino",
+    Image: DogF
   },
   {
-    type: "Cachorro",
-    icon: <TbDog />,
-    castrated: "Yes",
-    Age: "4 months",
-    Vacines: ["Raiva canina", "Gripe canina", "V8 ou V10"]
+    Type: "Cachorro",
+    Castrated: "Não",
+    Vacines: "Nenhuma",
+    Gender: "Feminino",
+    Image: DogF2
+  },
+  {
+    Type: "Cachorro",
+    Castrated: "Não",
+    Vacines: "Nenhuma",
+    Gender: "Masculino",
+    Image: DogM
+  },
+  {
+    Type: "Cachorro",
+    Castrated: "Não",
+    Vacines: "Nenhuma",
+    Gender: "Masculino",
+    Image: DogM1
+  },
+  {
+    Type: "Cachorro",
+    Castrated: "Não",
+    Vacines: "Nenhuma",
+    Gender: "Masculino",
+    Image: DogM2
+  },
+  {
+    Type: "Cachorro",
+    Castrated: "Não",
+    Vacines: "Nenhuma",
+    Gender: "Masculino",
+    Image: DogM3
+
+  },
+  {
+    Type: "Cachorro",
+    Icon: <TbDog />,
+    Castrated: "Não",
+    Vacines: "Nenhuma",
+    Gender: "Masculino",
+    Image: DogM4
+  },
+  {
+    Type: "Cachorro",
+    Icon: <TbDog />,
+    Castrated: "Não",
+    Vacines: "Nenhuma",
+    Gender: "Masculino",
+    Image: DogM5
   }
 ]
 
@@ -77,17 +131,26 @@ export default function Adoption() {
       <Pets>
         {
           Petlist.map((element) =>
+
             <motion.div style={{
               "border": "3px, #4444",
               "borderStyle": "solid",
               "cursor": "pointer",
               "borderRadius": "20px",
+              "width": "30ch"
             }}
               variants={parent}
               initial="variantA"
               whileHover="variantB">
-
-              <h1>{element.type}{element.icon}</h1>
+              {element.Type === "Gato" ?
+                <h1>{element.Type}<GiHollowCat /></h1> :
+                <h1>{element.Type}<TbDog /></h1>
+              }
+              {element.Gender === "Masculino" ?
+                <h2>Sexo: {element.Gender} <BsGenderMale /></h2> :
+                <h2>Sexo: {element.Gender} <BsGenderFemale /></h2>
+              }
+              <Img src={element.Image} alt="" />
 
             </motion.div>
           )
