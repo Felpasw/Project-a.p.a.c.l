@@ -97,7 +97,10 @@ const Infos = styled.div`
 `;
 
 const Service = styled.div`
-  transition: 3s;
+  text-align: center; 
+  align-items: center;
+  margin: auto;
+  padding: auto;
 `
 const AboutUsDiv = styled.div`
   display: flex;
@@ -119,19 +122,19 @@ const informationList = [
   {
     text: "Vacinas",
     icon: <TbVaccine />,
-    subtext: <Service> {textContent.Services}</Service>,
+    subtext: <Service> {textContent.Vaccines}</Service>,
     Image: <CatImage src={InfoCatImage} alt="" />
   },
   {
     text: "Consultas",
     icon: <IoIosPaper />,
-    subtext: <Service> {textContent.Services}</Service>,
+    subtext: <Service> {textContent.Queries}</Service>,
     Image: <HorseImage src={InfoHorseImage} alt="" />
   },
   {
     text: "Cirurgias",
     icon: <RiSurveyFill />,
-    subtext: <Div> {textContent.SurgeryInfo}</Div>,
+    subtext: <Service> {textContent.Surgeries}</Service>,
     Image: <CatImage2 src={InfoCatImage2} alt="" />
   },
   {
@@ -150,8 +153,8 @@ function AccordionItem({ text, subtext, icon, Image }: { text: string, subtext: 
   const toggle = () => setValue((state) => !state);
 
   return (
-    <div>
-      <Info onClick={toggle} style={{ "marginRight": "3px" }}><div style={{ "textAlign": "center" }}>{Image} <br />{text} {icon} </div></Info>
+    <Service>
+      <Info onClick={toggle} style={{ "marginRight": "3px" }}> {Image} <br />{text} {icon}</Info>
       {isOpened &&
         <AnimatePresence>
           <motion.div
@@ -164,7 +167,7 @@ function AccordionItem({ text, subtext, icon, Image }: { text: string, subtext: 
           </motion.div>
         </AnimatePresence>
       }
-    </div>
+    </Service>
   );
 }
 
@@ -173,7 +176,7 @@ function AccordionItem({ text, subtext, icon, Image }: { text: string, subtext: 
 export default function AboutUs() {
   const parent = {
     variantA: { scale: 1 },
-    variantB: { scale: 1.10 }
+    variantB: { scale: 1.05 }
 
   }
 

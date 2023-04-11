@@ -42,7 +42,7 @@ const Img = styled.img`
   
 `;
 const Subtitle = styled.h2`
-  font-size: 10px;
+  font-size: 11px;
   max-width: 100%;
   margin: auto;
   padding: auto;
@@ -53,6 +53,28 @@ const Titles = styled.div`
   max-width: 100%;
 
 `;
+const Button = styled.button`
+  align-self:center;
+  border-radius: 100px;
+  color: #ff0000;
+  font-size: 18px;
+  font-weight: 100;
+  padding: auto;
+  cursor: pointer;
+  max-width: 100%;
+  width: 100px;
+  height: 60px;
+  background: transparent;
+  border: 1px solid #ff0000;
+  outline: none;
+  transition: 1s ease-in-out;
+  &:hover {
+    transition: 1s ease-in-out;
+    background: #ff0000;
+    color: #ffff
+}
+`;
+
 
 
 
@@ -85,7 +107,7 @@ export default function InitialPage() {
           >
             <Subtitle>Nos ajude a crescer! </Subtitle >
           </motion.div>
-          <motion.div style={{ "alignItems": "center" }}
+          <motion.div style={{ "marginTop": "20px", "marginLeft": "40px", "maxWidth": "100%" }}
             initial={{ height: 0, scale: 0 }}
             animate={{ height: 1, scale: 1 }}
             transition={{
@@ -93,6 +115,7 @@ export default function InitialPage() {
               delay: 4,
             }}
           >
+            <Button><a href='/Donation' style={{ "textDecoration": "none", "color": "inherit" }}>Doar!</a></Button>
           </motion.div>
         </Titles>
         <motion.div style={{ "alignSelf": "end" }}

@@ -24,6 +24,7 @@ const Pets = styled.div`
   align-items: row;
   flex-direction: row;
   flex-wrap: wrap; 
+  border-radius: 100%;
   justify-content: space-around;
   @media(max-width: 999px){
     align-items: column;
@@ -46,6 +47,10 @@ const Title = styled.h1`
 `
 const Img = styled.img`
   max-width: 100%;
+  border-radius: 100%;
+  margin:auto;
+  padding: auto;
+
 `
 
 const Petlist = [
@@ -142,6 +147,8 @@ export default function Adoption() {
               variants={parent}
               initial="variantA"
               whileHover="variantB">
+              <Img src={element.Image} alt="" />
+
               {element.Type === "Gato" ?
                 <h1>{element.Type}<GiHollowCat /></h1> :
                 <h1>{element.Type}<TbDog /></h1>
@@ -150,7 +157,6 @@ export default function Adoption() {
                 <h2>Sexo: {element.Gender} <BsGenderMale /></h2> :
                 <h2>Sexo: {element.Gender} <BsGenderFemale /></h2>
               }
-              <Img src={element.Image} alt="" />
 
             </motion.div>
           )

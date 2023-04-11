@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import { RiWhatsappFill } from 'react-icons/ri';
 import { BsFacebook } from 'react-icons/bs';
-import { GrInstagram } from 'react-icons/gr';
 import { MdOutlinePets } from 'react-icons/md';
 import { TfiMenu } from 'react-icons/tfi'
 import apaclLogoImage from '../../assets/APACL.png';
@@ -112,7 +111,7 @@ export default function Navbar() {
 
   return (
     <Nav>
-      <Img src={apaclLogoImage} />
+      <a href="/"><Img src={apaclLogoImage} /> </a>
       <Logo> A.P.A.C.L<MdOutlinePets /></Logo>
       <AnimatePresence>
         {isVisible && (
@@ -126,16 +125,7 @@ export default function Navbar() {
                 initial={{ x: 0, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 300, opacity: 0 }}
-                transition={{ delay: 0, duration: 1.3 }}
-
-              >
-                <NavItems href="/"> Inicio </NavItems>
-              </motion.li>
-              <motion.li style={{ "letterSpacing": "3px", "marginLeft": "32px" }}
-                initial={{ x: 0, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: 300, opacity: 0 }}
-                transition={{ delay: 1.3, duration: 1.3 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
               >
                 <NavItems href="/Adoption"> Animais para adoção </NavItems>
               </motion.li>
@@ -143,7 +133,23 @@ export default function Navbar() {
                 initial={{ x: 0, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 300, opacity: 0 }}
-                transition={{ delay: 1.8, duration: 1.3 }}
+                transition={{ delay: 2, duration: 0.5 }}
+              >
+                <NavItems href="/Events">Eventos</NavItems>
+              </motion.li>
+              <motion.li style={{ "letterSpacing": "3px", "marginLeft": "32px" }}
+                initial={{ x: 0, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 300, opacity: 0 }}
+                transition={{ delay: 2, duration: 0.5 }}
+              >
+                <NavItems href="/Donation">Doações</NavItems>
+              </motion.li>
+              <motion.li style={{ "letterSpacing": "3px", "marginLeft": "32px" }}
+                initial={{ x: 0, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 300, opacity: 0 }}
+                transition={{ delay: 1, duration: 0.5 }}
               >
                 <NavItems href="/"><RiWhatsappFill /></NavItems>
               </motion.li>
@@ -151,17 +157,9 @@ export default function Navbar() {
                 initial={{ x: 0, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 300, opacity: 0 }}
-                transition={{ delay: 3.1, duration: 1.3 }}
+                transition={{ delay: 1.5, duration: 0.5 }}
               >
                 <NavItems href="facebook.com/SPAdeCampoLargoPR" target={'_blank'}><BsFacebook /></NavItems>
-              </motion.li>
-              <motion.li style={{ "letterSpacing": "3px", "marginLeft": "32px" }}
-                initial={{ x: 0, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: 300, opacity: 0 }}
-                transition={{ delay: 4.4, duration: 1.3 }}
-              >
-                <NavItems href="/"><GrInstagram /></NavItems>
               </motion.li>
             </Navlist>
           </motion.div>
