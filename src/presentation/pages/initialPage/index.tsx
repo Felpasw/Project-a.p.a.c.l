@@ -42,7 +42,7 @@ const Img = styled.img`
   
 `;
 const Subtitle = styled.h2`
-  font-size: 11px;
+  font-size: 20px;
   max-width: 100%;
   margin: auto;
   padding: auto;
@@ -54,12 +54,13 @@ const Titles = styled.div`
 
 `;
 const Button = styled.button`
+  padding: auto;
+  margin-top: 15px ;
   align-self:center;
   border-radius: 100px;
   color: #ff0000;
   font-size: 18px;
   font-weight: 100;
-  padding: auto;
   cursor: pointer;
   max-width: 100%;
   width: 100px;

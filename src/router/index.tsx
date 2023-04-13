@@ -4,6 +4,7 @@ import Adoption from '../presentation/pages/Adoption';
 import InitialPage from '../presentation/pages/initialPage';
 import Donation from '../presentation/pages/Donation';
 import Events from '../presentation/pages/Events';
+import ErrorPage from '../presentation/pages/ErrorPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -12,6 +13,8 @@ const router = createBrowserRouter(
       <Route element={<Adoption />} path="/Adoption" />
       <Route element={<Donation />} path="/Donation" />
       <Route element={<Events />} path="/Events" />
+      <Route element={<ErrorPage />} path="*" />
+
     </>
   )
 );
