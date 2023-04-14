@@ -1,40 +1,115 @@
 import styled from 'styled-components';
 import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
-import CatsDogsImage from '../../assets/CatsDogsImage.png';
+import CloseDog from '../../assets/CloseDog.png';
+import { FaBone } from 'react-icons/fa';
+import { RiBillFill, RiMoneyDollarCircleFill } from 'react-icons/ri';
+import { GiTwoCoins } from 'react-icons/gi';
+import { MdPeopleAlt } from 'react-icons/md';
 
+{/* <Title>Ajude nossa instituição a ajudar você!</Title> */ }
 const MainContent = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+
 `
 const Title = styled.h1`
   align-self: center;
-  padding-top: 100px;
-  margin: auto;
   max-width: 100%;
-  font-size: 5ch;
+  font-size: 4ch;
   font-family: 'Work Sans', sans-serif;
   align-self: center;
-  color:  #23232e;
-  
-`
+  color:  #ad78fc;
+  text-transform: uppercase; 
+  margin: auto;
+  padding: auto;
+`;
 const Img = styled.img`
- align-self: flex-end;
- padding-top: 100px;
+ align-self: center; 
  max-width: 100%;
- width: 900px;
- background-color: #ad78fc;
- border-radius: 100%;
-`
+ width: 500px;
+ padding-top: 100px;
+ margin: auto;
+ margin-right: 5%;
+`;
+
+const DonationWays = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+  padding: auto;
+`;
+const DonationWay = styled.button`
+  padding: auto;
+  margin-top: 15px;
+  align-self:center;
+  border-radius: 90px;
+  color: #ad78fc;
+  font-size: 18px;
+  font-weight: 100;
+  cursor: pointer;
+  max-width: 100%;
+  height: 60px;
+  width: 300px;
+  background: transparent;
+  border: 1px solid #ad78fc;
+  outline: none;
+  transition: 0.5s ease-in-out;
+  &:hover {
+    transition: 0.5s ease-in-out;
+    background: #ad78fc;
+    color: #ffff
+}
+`;
+
+const DonationWaysList =
+  [
+    {
+      Name: "Ajuda monetária",
+      Icon: <RiMoneyDollarCircleFill />,
+    },
+    {
+      Name: "Ajude por meio da conta de luz",
+      Icon: <RiBillFill />
+    },
+    {
+      Name: "Ração ou outros recursos",
+      Icon: <FaBone />
+    },
+    {
+      Name: "Doe suas notas fiscais",
+      Icon: <GiTwoCoins />
+    },
+    {
+      Name: "Seja um voluntário",
+      Icon: <MdPeopleAlt />
+    }
+
+  ]
+
 
 export default function Donation() {
   return (
     <>
       <Navbar />
       <MainContent>
-        <Title>Ajude nossa instituição a ajudar você!</Title>
-        <Img src={CatsDogsImage} />
+        <Img src={CloseDog} />
+        <DonationWays>
+          <Title>Formas de doação: </Title>
+          {
+            DonationWaysList.map((element) =>
+              <DonationWay>
+                {element.Icon} <br />
+                {element.Name}
+              </DonationWay>
+            )}
+        </DonationWays>
       </MainContent>
       <Footer />
     </>

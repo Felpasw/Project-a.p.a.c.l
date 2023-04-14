@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Fragment, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { IoIosArrowDown } from 'react-icons/io';
+import CatEating from '../../assets/CatEating.png'
 
 const Title = styled.h1`
    display: flex;
@@ -17,6 +18,8 @@ const Title = styled.h1`
   text-transform: uppercase;
   right: auto;
   color:  #23232e;
+  margin-bottom: -100px;
+  padding-bottom: 0px;
 `;
 
 
@@ -54,10 +57,21 @@ const EventContentText = styled.div`
   margin: auto;
   padding: auto;
   width: 300px;
-`
+`;
 const EventSubtitle = styled.h2`
 
+`;
+
+const Img = styled.img`
+  width: 400px;
+  align-self: center;
 `
+
+const TitleContent = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
 
 function AnimatedSVG() {
   return (
@@ -126,9 +140,10 @@ export default function Events() {
   return (
     <Fragment>
       <Navbar />
-      <div style={{ "display": "flex" }}>
+      <TitleContent style={{ "display": "flex" }}>
         <Title>Eventos</Title>
-      </div>
+        <Img src={CatEating} />
+      </TitleContent>
       <EventsDiv>
         {
           EventList.map((event) =>
