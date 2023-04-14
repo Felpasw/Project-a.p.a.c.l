@@ -101,7 +101,7 @@ export default function Donation() {
       <MainContent>
         <Img src={CloseDog} />
         <DonationWays>
-          <Title>Formas de doação: </Title>
+          <Title>Formas de ajudar: </Title>
           {
             DonationWaysList.map((element) =>
               <DonationWay>
