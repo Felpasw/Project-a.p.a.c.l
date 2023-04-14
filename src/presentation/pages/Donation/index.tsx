@@ -79,7 +79,7 @@ const DonationWaysList =
       Icon: <RiBillFill />
     },
     {
-      Name: "Ração ou outros recursos",
+      Name: "Doe ração ou outros recursos",
       Icon: <FaBone />
     },
     {
