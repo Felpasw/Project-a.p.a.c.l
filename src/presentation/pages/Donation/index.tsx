@@ -6,6 +6,7 @@ import { FaBone } from 'react-icons/fa';
 import { RiBillFill, RiMoneyDollarCircleFill } from 'react-icons/ri';
 import { GiTwoCoins } from 'react-icons/gi';
 import { MdPeopleAlt } from 'react-icons/md';
+import { AnimatePresence, motion } from 'framer-motion';
 
 {/* <Title>Ajude nossa instituição a ajudar você!</Title> */ }
 const MainContent = styled.div`
@@ -21,7 +22,6 @@ const Title = styled.h1`
   align-self: center;
   max-width: 100%;
   font-size: 4ch;
-  font-family: 'Work Sans', sans-serif;
   align-self: center;
   color:  #ad78fc;
   text-transform: uppercase; 
@@ -100,16 +100,34 @@ export default function Donation() {
       <Navbar />
       <MainContent>
         <Img src={CloseDog} />
-        <DonationWays>
-          <Title>Formas de ajudar: </Title>
-          {
-            DonationWaysList.map((element) =>
-              <DonationWay>
-                {element.Icon} <br />
-                {element.Name}
-              </DonationWay>
-            )}
-        </DonationWays>
+        <AnimatePresence>
+          <motion.div
+            initial={{ y: 300, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -300, opacity: 0 }}
+            transition={{ delay: 0.2, duration: 1.3 }}
+            style={{
+              "display": "flex",
+              "flexDirection": "column",
+              "justifyContent": "center",
+              "flexWrap": "wrap",
+              "margin": "auto",
+              "padding": "auto"
+            }}
+          >
+            <DonationWays>
+              <Title>Formas de ajudar: </Title>
+
+              {
+                DonationWaysList.map((element) =>
+                  <DonationWay>
+                    {element.Icon} <br />
+                    {element.Name}
+                  </DonationWay>
+                )}
+            </DonationWays>
+          </motion.div>
+        </AnimatePresence>
       </MainContent>
       <Footer />
     </>
