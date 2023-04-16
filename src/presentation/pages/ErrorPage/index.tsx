@@ -1,11 +1,6 @@
 import styled from 'styled-components';
-import FunnyDog from '../../assets/FunnyDog.png';
+import ScaredCat from '../../assets/ScaredCat.png';
 
-
-
-const CatImage = styled.img`
- 
-`;
 
 const Content = styled.div`
   display: flex;
@@ -46,11 +41,8 @@ const Button = styled.button`
 `;
 
 const Img = styled.img`
-  border-radius: 100%;
-  background-color: red;
   max-width: 100%;
   width: 500px;
-  margin: auto;
 `;
 
 
@@ -59,11 +51,11 @@ export default function ErrorPage() {
   return (
     <Content>
       <Div>
-        <Img style={{ "padding": "9%" }} src={FunnyDog} />
+        <Img style={{ "padding": "9%" }} src={ScaredCat} />
         <div style={{ "display": "flex", "flexDirection": "column" }}>
           <Title> 404</Title>
-          <h2>Parece que não encontramos a página que você procura!</h2>
-          <Button>Voltar para a página inicial</Button>
+          <h2>Ops..Parece que não encontramos a página que você procura :(</h2>
+          <Button><a href="/" style={{ "textDecoration": "none", "color": "inherit" }}>Voltar para a página inicial</a></Button>
         </div>
       </Div>
 

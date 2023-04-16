@@ -58,7 +58,7 @@ const Button = styled.button`
   margin-top: 15px ;
   align-self:center;
   border-radius: 100px;
-  color: #ff0000;
+  color: rgb(0,255,171);
   font-size: 18px;
   font-weight: 100;
   cursor: pointer;
@@ -66,12 +66,12 @@ const Button = styled.button`
   width: 100px;
   height: 60px;
   background: transparent;
-  border: 1px solid #ff0000;
+  border: 1px solid rgb(0,255,171);
   outline: none;
   transition: 1s ease-in-out;
   &:hover {
     transition: 1s ease-in-out;
-    background: #ff0000;
+    background: rgb(0,255,171);
     color: #ffff
 }
 `;

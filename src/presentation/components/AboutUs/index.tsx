@@ -22,13 +22,15 @@ const AboutUsText = styled.div`
   max-width: 100%;
   margin: auto;
   padding: auto;
-`
+`;
+
 const Img = styled.img`
   margin:auto;
   max-width: 100%;
   float: center;
   padding: auto;
 `;
+
 const CatImage2 = styled.img`
   margin:auto;
   width: 300px;
@@ -37,6 +39,7 @@ const CatImage2 = styled.img`
   background-color: #29bdc1;
   border-radius: 100%;
 `;
+
 const DogCatImage = styled.img`
   margin:auto;
   width: 300px;
@@ -45,7 +48,8 @@ const DogCatImage = styled.img`
   float: center;
   background-color: #d84242;
   border-radius: 100%;
-`
+`;
+
 const CatImage = styled.img`
   margin:auto;
   width: 300px;
@@ -53,7 +57,8 @@ const CatImage = styled.img`
   float: center;
   background-color: #913F92;
   border-radius: 100%;
-`
+`;
+
 const HorseImage = styled.img`
   margin:auto;
   width: 330px;
@@ -61,7 +66,7 @@ const HorseImage = styled.img`
   float: center;
   background-color: #eaff7b;
   border-radius: 100%;
-`
+`;
 
 const Div = styled.div`
   display: flex;
@@ -75,7 +80,7 @@ const Div = styled.div`
     flex-direction: column;
       overflow: scroll;
   }
-`
+`;
 
 const Info = styled.h1`
   transition: 0.3s;
@@ -86,6 +91,7 @@ const Info = styled.h1`
   margin: 10px;
   padding: auto;
 `;
+
 const Infos = styled.div`
   display: flex;
   flex-direction: column;
@@ -101,7 +107,8 @@ const Service = styled.div`
   align-items: center;
   margin: auto;
   padding: auto;
-`
+`;
+
 const AboutUsDiv = styled.div`
   display: flex;
   flex-direction: row;
@@ -113,10 +120,7 @@ const AboutUsDiv = styled.div`
     
   }
 
-`
-
-
-
+`;
 
 const informationList = [
   {
@@ -143,7 +147,7 @@ const informationList = [
     subtext: <Service> {textContent.Services}</Service>,
     Image: <DogCatImage src={InfoDogCatImage} alt="" />
   }
-]
+];
 
 
 
@@ -172,15 +176,12 @@ function AccordionItem({ text, subtext, icon, Image }: { text: string, subtext: 
 }
 
 
-
 export default function AboutUs() {
   const parent = {
     variantA: { scale: 1 },
     variantB: { scale: 1.05 }
 
   }
-
-
 
   return (
     <Div>

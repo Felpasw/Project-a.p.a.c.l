@@ -1,25 +1,28 @@
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import styled from 'styled-components';
+
 import { Fragment, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { IoIosArrowDown } from 'react-icons/io';
-import CatEating from '../../assets/CatEating.png'
+
+import EventBanner from '../../assets/EventsBanner.png';
+import CatEating from '../../assets/CatEating.png';
+
+import { MdDateRange, MdOutlineShareLocation } from 'react-icons/md';
+import { HiInformationCircle } from 'react-icons/hi';
 
 const Title = styled.h1`
    display: flex;
   align-self: center;
-  padding-top: 100px;
   max-width: 100%;
   margin: auto;
   padding: auto;
-  font-size: 5ch;
+  font-size: 4ch;
   font-family: 'Work Sans', sans-serif;
   text-transform: uppercase;
   right: auto;
-  color:  #23232e;
-  margin-bottom: -100px;
-  padding-bottom: 0px;
+  color:  #62CDFF;
 `;
 
 
@@ -45,6 +48,7 @@ const EventsDiv = styled.div`
 const EventTitle = styled.h1`
   white-space: nowrap;
   text-overflow: ellipsis;
+  color: #62CDFF;
 `;
 
 const EventContent = styled.div`
@@ -59,23 +63,32 @@ const EventContentText = styled.div`
   width: 300px;
 `;
 const EventSubtitle = styled.h2`
+  color:#62CDFF;
 
 `;
 
 const Img = styled.img`
-  width: 400px;
+  padding-top: 100px;
   align-self: center;
-`
-
+  max-width: 100%;
+`;
 const TitleContent = styled.div`
   display: flex;
   flex-direction: column;
+`;
+const CatImage = styled.img`
+  border-radius: 100%;
+  background-color: #62CDFF;
+  align-self: center;
+  padding: auto;
+  margin: auto;
+  
 `
 
 
 function AnimatedSVG() {
   return (
-    <motion.div> <IoIosArrowDown style={{ "maxWidth": "100%" }} /></motion.div>
+    <motion.div> <IoIosArrowDown style={{ "maxWidth": "100%", "color": "#62CDFF" }} /></motion.div>
   )
 }
 
@@ -102,7 +115,7 @@ function AccordionItem({ About, Local, title, Date }: { About: string, Local: JS
           <EventTitle onClick={toggle}> {title} </EventTitle>
           <AnimatedSVG />
         </div>
-        <hr />
+        <hr style={{ "color": "#62CDFF" }} />
       </motion.div>
       {isOpened &&
         <AnimatePresence>
@@ -115,13 +128,13 @@ function AccordionItem({ About, Local, title, Date }: { About: string, Local: JS
             <EventContent>
 
               <EventContentText>
-                <EventSubtitle> Sobre: </EventSubtitle>
+                <EventSubtitle> Sobre <HiInformationCircle /></EventSubtitle>
                 {About}
-                <EventSubtitle> Data: </EventSubtitle>
+                <EventSubtitle> Data <MdDateRange /> </EventSubtitle>
                 {Date}
               </EventContentText>
               <EventContentText>
-                <EventSubtitle>Local do evento: </EventSubtitle>
+                <EventSubtitle> Local <MdOutlineShareLocation /> </EventSubtitle>
                 {Local}
               </EventContentText>
             </EventContent>
@@ -141,8 +154,8 @@ export default function Events() {
     <Fragment>
       <Navbar />
       <TitleContent style={{ "display": "flex" }}>
-        <Title>Eventos</Title>
-        <Img src={CatEating} />
+        <Img src={EventBanner} />
+        <Title>Próximos eventos: </Title>
       </TitleContent>
       <EventsDiv>
         {
@@ -150,6 +163,9 @@ export default function Events() {
             <AccordionItem Local={event.Local} About={event.About} title={event.Title} Date={event.Date} />
           )}
       </EventsDiv>
+      <div style={{ "display": "flex", "margin": "auto", "padding": "auto" }}>
+        <CatImage src={CatEating} />
+      </div>
       <Footer />
     </Fragment>
   )
