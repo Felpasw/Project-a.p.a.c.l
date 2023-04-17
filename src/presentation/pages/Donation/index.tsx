@@ -116,7 +116,7 @@ export default function Donation() {
             }}
           >
             <DonationWays>
-              <Title>Formas de ajudar: </Title>
+              <Title>Formas de contribuição: </Title>
 
               {
                 DonationWaysList.map((element) =>

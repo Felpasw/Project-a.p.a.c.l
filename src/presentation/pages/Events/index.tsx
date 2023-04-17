@@ -59,8 +59,11 @@ const EventContent = styled.div`
 `;
 const EventContentText = styled.div`
   margin: auto;
-  padding: auto;
+  padding: 100px;
   width: 300px;
+  padding-top: 25px;
+  padding-left: 25px;
+
 `;
 const EventSubtitle = styled.h2`
   color:#62CDFF;
@@ -84,7 +87,7 @@ const CatImage = styled.img`
   margin: auto;
   
 `
-
+//aumentar padding, espaçar mais o texto centralizado e diminuir a imagem
 
 function AnimatedSVG() {
   return (
@@ -126,11 +129,10 @@ function AccordionItem({ About, Local, title, Date }: { About: string, Local: JS
             transition={{ delay: 0.2, duration: 1.3 }}
           >
             <EventContent>
-
               <EventContentText>
                 <EventSubtitle> Sobre <HiInformationCircle /></EventSubtitle>
                 {About}
-                <EventSubtitle> Data <MdDateRange /> </EventSubtitle>
+                <EventSubtitle style={{ "paddingTop": "25px" }}> Data <MdDateRange /> </EventSubtitle>
                 {Date}
               </EventContentText>
               <EventContentText>

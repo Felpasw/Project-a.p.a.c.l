@@ -19,23 +19,25 @@ import DogM3 from '../../assets/AdoptionContent/DogM3.png';
 import DogM4 from '../../assets/AdoptionContent/DogM4.png';
 import DogM5 from '../../assets/AdoptionContent/DogM5.png';
 
+import CatAndDogAdoption from '../../assets/AdoptionContent/CatAndDogAdoption.png'
+import { MdOutlinePets } from 'react-icons/md';
+
 const Pets = styled.div`
   display: flex;
   align-items: row;
   flex-direction: row;
   flex-wrap: wrap; 
-  border-radius: 100%;
+  color: #FD841F;
   justify-content: space-around;
   @media(max-width: 999px){
     align-items: column;
   }
 
+`;
 
-`
 const Title = styled.h1`
   display: flex;
   align-self: center;
-  padding-top: 100px;
   max-width: 100%;
   margin: auto;
   padding: auto;
@@ -43,7 +45,7 @@ const Title = styled.h1`
   font-family: 'Work Sans', sans-serif;
   text-transform: uppercase;
   right: auto;
-  color:  #23232e;
+  color:  #ffff;
 `
 const Img = styled.img`
   max-width: 100%;
@@ -51,46 +53,62 @@ const Img = styled.img`
   margin:auto;
   padding: auto;
 
-`
+`;
+const PresentationContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-top: 100px;
+  background-color: #FD841F;
+`;
+const DogAndCat = styled.img`
+  max-width: 100%;
+  background-color: #FD841F;
+`;
+
+const BackGroundDogTrack = styled.h1`
+  color: #FFFF;
+  font-size: 700px;
+`;
 
 const Petlist = [
   {
-    Type: "Cachorro",
+    Type: "Cachorro(a)",
     Castrated: "Não",
     Vacines: "Nenhuma",
     Gender: "Feminino",
     Image: DogF
   },
   {
-    Type: "Cachorro",
+    Type: "Cachorro(a)",
     Castrated: "Não",
     Vacines: "Nenhuma",
     Gender: "Feminino",
     Image: DogF2
   },
   {
-    Type: "Cachorro",
+    Type: "Cachorro(a)",
     Castrated: "Não",
     Vacines: "Nenhuma",
     Gender: "Masculino",
     Image: DogM
   },
   {
-    Type: "Cachorro",
+    Type: "Cachorro(a)",
     Castrated: "Não",
     Vacines: "Nenhuma",
     Gender: "Masculino",
     Image: DogM1
   },
   {
-    Type: "Cachorro",
+    Type: "Cachorro(a)",
     Castrated: "Não",
     Vacines: "Nenhuma",
     Gender: "Masculino",
     Image: DogM2
   },
   {
-    Type: "Cachorro",
+    Type: "Cachorro(a)",
     Castrated: "Não",
     Vacines: "Nenhuma",
     Gender: "Masculino",
@@ -98,7 +116,7 @@ const Petlist = [
 
   },
   {
-    Type: "Cachorro",
+    Type: "Cachorro(a)",
     Icon: <TbDog />,
     Castrated: "Não",
     Vacines: "Nenhuma",
@@ -106,7 +124,7 @@ const Petlist = [
     Image: DogM4
   },
   {
-    Type: "Cachorro",
+    Type: "Cachorro(a)",
     Icon: <TbDog />,
     Castrated: "Não",
     Vacines: "Nenhuma",
@@ -122,15 +140,20 @@ const Petlist = [
 export default function Adoption() {
   const parent = {
     variantA: { scale: 1, opacity: 1 },
-    variantB: { scale: 1.10, opacity: 0.5, border: "3px, #4444" }
+    variantB: { scale: 1.10, opacity: 0.5 }
 
   }
 
   return (
     <Fragment>
       <Navbar />
+      <PresentationContent>
+        <Title>Não compre, adote!   </Title>
+        <DogAndCat src={CatAndDogAdoption} />
+      </PresentationContent>
+
       <div style={{ "display": "flex" }}>
-        <Title>Animais para adoção</Title>
+        <h1>Animais para adoção</h1>
       </div>
 
       <Pets>
