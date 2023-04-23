@@ -31,14 +31,12 @@ const Pets = styled.div`
   flex-wrap: wrap; 
   color: #ffd801;
   justify-content: space-around;
-  @media(max-width: 999px){
-    align-items: column;
-  }
 
 `;
 
 const Title = styled.h1`
   display: flex;
+  flex-wrap: wrap;
   align-self: center;
   max-width: 100%;
   margin: auto;
@@ -53,7 +51,7 @@ const Img = styled.img`
   max-width: 100%;
   border-radius: 100%;
   margin:auto;
-  padding: auto;
+  padding:auto;
 
 `;
 const PresentationContent = styled.div`
@@ -74,6 +72,7 @@ const DivContent = styled.div`
 `;
 const Subtitles = styled.h1`
   color: #ffd801;
+ 
 `;
 const AboutDonation = styled.div`
   display: flex;
@@ -81,7 +80,10 @@ const AboutDonation = styled.div`
   align-items: start;
   padding: 5%;
   margin: 5%;
-`
+  margin-top: -115px;
+  background-color: #ffff;
+  border-radius: 40px;
+`;
 
 
 const Petlist = [
@@ -170,7 +172,7 @@ export default function Adoption() {
           <p>{textContent.AboutDonation}</p>
         </AboutDonation>
         <div style={{ "display": "flex" }}>
-          <Subtitles style={{ "alignSelf": "center" }}> Atuais moradores da casa </Subtitles>
+          <h2 style={{ "alignSelf": "center" }}> Atuais moradores da casa </h2>
         </div>
         <Pets>
           {
