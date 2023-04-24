@@ -10,19 +10,14 @@ import { motion } from 'framer-motion';
 
 
 
-{/* <Title>Ajude nossa instituição a ajudar você!</Title> */ }
-const MainContent = styled.div`
-  align-items: center;
-  align-content: center;
-  align-self: center;
 
-`
+
 const Subtitle = styled.h1`
   align-self: center;
   max-width: 100%;
   font-size: 4ch;
   align-self: center;
-  color:  #ad78fc;
+  color:  #ffa722;
   text-transform: uppercase; 
   padding-top: 150px;
 `;
@@ -31,7 +26,8 @@ const Title = styled.h1`
   max-width: 100%;
   font-size: 7ch;
   align-self: center;
-  margin-bottom: -6%;
+  margin-bottom: -10%;
+  margin: 3%;
   font-family: 'Jost', sans-serif;
   color:  #ffff;
   text-transform: uppercase; 
@@ -41,7 +37,6 @@ const Title = styled.h1`
 const Img = styled.img`
  align-self: center; 
  max-width: 100%;
- padding-top: 100px;
  margin-right: 5%;
 `;
 
@@ -62,7 +57,7 @@ const DonationWay = styled.button`
   margin-top: 15px;
   align-self:center;
   border-radius: 90px;
-  color: #ad78fc;
+  color: #ffa722;
   font-size: 18px;
   font-weight: 100;
   cursor: pointer;
@@ -70,20 +65,19 @@ const DonationWay = styled.button`
   height: 60px;
   width: 300px;
   background: transparent;
-  border: 1px solid #ad78fc;
+  border: 1px solid #ffa722;
   outline: none;
   transition: 0.5s ease-in-out;
   &:hover {
     transition: 0.5s ease-in-out;
-    background: #ad78fc;
+    background: #ffa722;
     color: #ffff
 }
 `;
 
 const TitleContent = styled.div`
   padding-top: 100px;
-  background: -webkit-gradient(linear, left top, right top, from(#6f9ed8), to(#d261e4)) no-repeat;
-
+  background: -webkit-gradient(linear, left top, right top, from(#ffa722), to(#ffd801)) no-repeat;
 `;
 
 const DonationWaysList =
@@ -91,22 +85,27 @@ const DonationWaysList =
     {
       Name: "Ajuda monetária",
       Icon: <RiMoneyDollarCircleFill />,
+      Link: "Dinheiro"
     },
     {
       Name: "Ajude por meio da conta de luz",
-      Icon: <RiBillFill />
+      Icon: <RiBillFill />,
+      Link: "Conta"
     },
     {
       Name: "Doe ração ou outros recursos",
-      Icon: <FaBone />
+      Icon: <FaBone />,
+      Link: "Racao"
     },
     {
       Name: "Doe suas notas fiscais",
-      Icon: <GiTwoCoins />
+      Icon: <GiTwoCoins />,
+      Link: "Notas"
     },
     {
       Name: "Seja um voluntário",
-      Icon: <MdPeopleAlt />
+      Icon: <MdPeopleAlt />,
+      Link: "Voluntario"
     }
 
   ]
@@ -141,8 +140,10 @@ export default function Donation() {
         {
           DonationWaysList.map((element) =>
             <DonationWay>
-              {element.Icon} <br />
-              {element.Name}
+              <a href={`/:${element.Link}`} style={{ "textDecoration": "none", "color": "inherit" }}>
+                {element.Icon} <br />
+                {element.Name}
+              </a>
             </DonationWay>
           )}
       </DonationWays>

@@ -188,7 +188,7 @@ export default function AboutUs() {
       <AboutUsDiv>
         <Img src={apaclLogoImage} alt="" />
         <AboutUsText>
-          <h1>Sobre nós: </h1>
+          <h1>Sobre nós </h1>
           {textContent.AboutUsText}
         </AboutUsText>
       </ AboutUsDiv>

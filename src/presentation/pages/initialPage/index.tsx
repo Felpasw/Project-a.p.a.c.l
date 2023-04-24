@@ -34,7 +34,8 @@ const Div = styled.div`
 `;
 const Img = styled.img` 
   max-width: 100%;
-  background-color:rgb(0,255,171);
+  /* background-color:rgb(0,255,171); */
+  background: -webkit-gradient(linear, left top, right top, from(#ffa722), to(#ffd801)) no-repeat;
   border-radius: 150%;
   margin: auto;
   padding: auto;
@@ -58,7 +59,7 @@ const Button = styled.button`
   margin-top: 15px ;
   align-self:center;
   border-radius: 100px;
-  color: rgb(0,255,171);
+  color: #ffa722;
   font-size: 18px;
   font-weight: 100;
   cursor: pointer;
@@ -66,13 +67,13 @@ const Button = styled.button`
   width: 100px;
   height: 60px;
   background: transparent;
-  border: 1px solid rgb(0,255,171);
+  border: 1px solid #ffa722;
   outline: none;
   transition: 1s ease-in-out;
   &:hover {
     transition: 1s ease-in-out;
-    background: rgb(0,255,171);
-    color: #ffff
+    background: #ffa722;
+    color: #ffff;
 }
 `;
 
@@ -82,7 +83,7 @@ const Button = styled.button`
 
 export default function InitialPage() {
   return (
-    <Fragment>
+    <>
       <Navbar />
       <Div>
         <Titles style={{ "margin": "auto" }}>
@@ -133,7 +134,7 @@ export default function InitialPage() {
       </Div>
       <AboutUs />
       <Footer />
-    </Fragment>
+    </>
   );
 }
 

@@ -33,7 +33,7 @@ const Title = styled.h1`
   font-family: 'Work Sans', sans-serif;
   text-transform: uppercase;
   right: auto;
-  color:#00bfe0;
+  color:#ffa722;
 `;
 
 const MainTitle = styled.h1`
@@ -63,7 +63,7 @@ const EventsDiv = styled.div`
 const EventTitle = styled.h1`
   white-space: nowrap;
   text-overflow: ellipsis;
-  color:  #00bfe0;
+  color:  #ffa722;
 `;
 
 const EventContent = styled.div`
@@ -80,7 +80,7 @@ const EventContentText = styled.div`
 
 `;
 const EventSubtitle = styled.h2`
-  color: #00bfe0;
+  color: #ffa722;
 `;
 
 const Img = styled.img`
@@ -102,14 +102,13 @@ const Subtitle = styled.div`
 `
 const CatImage = styled.img`
   border-radius: 100%;
-  background-color:  #00bfe0;
+  background-color:  #ffa722;
   align-self: center;
   padding: auto;
   margin: auto; 
 `;
 const MainContent = styled.div`
-  background: -webkit-gradient(linear, left top, right top, from(#006d8f), to(#00bfe0)) no-repeat;
-  
+    background: -webkit-gradient(linear, left top, right top, from(#ffa722), to(#ffd801)) no-repeat;
 `;
 
 
@@ -120,7 +119,7 @@ function Itens({ About, Local, title, Date }: { About: string, Local: JSX.Elemen
       <div style={{ "display": "flex", "flexDirection": "row" }}>
         <EventTitle> {title} </EventTitle>
       </div>
-      <hr style={{ "color": " #2afadf" }} />
+      <hr style={{ "color": " #ffa722" }} />
       <EventContent>
         <EventContentText>
           <EventSubtitle> Sobre <HiInformationCircle /></EventSubtitle>

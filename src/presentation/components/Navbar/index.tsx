@@ -44,7 +44,6 @@ const Logo = styled.div`
   padding-right: 6ch;
   position: relative;
   right: auto;
-  
 `;
 
 const MobileMenu = styled.div`
