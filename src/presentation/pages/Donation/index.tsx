@@ -1,24 +1,23 @@
 import styled from 'styled-components';
 import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
-import CloseDog from '../../assets/CloseDog.png';
+import CatsAndDogs from '../../assets/CatsAndDogs.png';
 import { FaBone } from 'react-icons/fa';
 import { RiBillFill, RiMoneyDollarCircleFill } from 'react-icons/ri';
 import { GiTwoCoins } from 'react-icons/gi';
 import { MdPeopleAlt } from 'react-icons/md';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
+
+
 
 {/* <Title>Ajude nossa instituição a ajudar você!</Title> */ }
 const MainContent = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   align-items: center;
   align-content: center;
   align-self: center;
 
 `
-const Title = styled.h1`
+const Subtitle = styled.h1`
   align-self: center;
   max-width: 100%;
   font-size: 4ch;
@@ -28,6 +27,16 @@ const Title = styled.h1`
   margin: auto;
   padding: auto;
 `;
+const Title = styled.h1`
+  align-self: center;
+  max-width: 100%;
+  font-size: 7ch;
+  align-self: center;
+  color:  #ffff;
+  text-transform: uppercase; 
+`;
+
+
 const Img = styled.img`
  align-self: center; 
  max-width: 100%;
@@ -44,6 +53,7 @@ const DonationWays = styled.div`
   flex-wrap: wrap;
   margin: auto;
   padding: auto;
+  flex-wrap: wrap;
 `;
 const DonationWay = styled.button`
   padding: auto;
@@ -66,6 +76,12 @@ const DonationWay = styled.button`
     background: #ad78fc;
     color: #ffff
 }
+`;
+
+const TitleContent = styled.div`
+  padding-top: 100px;
+  background: -webkit-gradient(linear, left top, right top, from(#6f9ed8), to(#d261e4)) no-repeat;
+
 `;
 
 const DonationWaysList =
@@ -98,36 +114,37 @@ export default function Donation() {
   return (
     <>
       <Navbar />
-      <MainContent>
-        <Img src={CloseDog} />
-        <AnimatePresence>
-          <motion.div
-            initial={{ y: 300, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -300, opacity: 0 }}
-            transition={{ delay: 0.2, duration: 1.3 }}
-            style={{
-              "display": "flex",
-              "flexDirection": "column",
-              "justifyContent": "center",
-              "flexWrap": "wrap",
-              "margin": "auto",
-              "padding": "auto"
-            }}
-          >
-            <DonationWays>
-              <Title>Formas de contribuição: </Title>
-              {
-                DonationWaysList.map((element) =>
-                  <DonationWay>
-                    {element.Icon} <br />
-                    {element.Name}
-                  </DonationWay>
-                )}
-            </DonationWays>
-          </motion.div>
-        </AnimatePresence>
-      </MainContent>
+      <TitleContent>
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -50, opacity: 0 }}
+          transition={{ delay: 0.2, duration: 1.3 }}
+          style={{
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "flexWrap": "wrap",
+            "margin": "auto",
+            "paddingTop": "100px"
+
+          }}
+        >
+          <Title> Nos ajude a ajudar! </Title>
+          <img src={CatsAndDogs} />
+        </motion.div>
+      </TitleContent>
+
+      <DonationWays>
+        <Subtitle>Formas de contribuição: </Subtitle>
+        {
+          DonationWaysList.map((element) =>
+            <DonationWay>
+              {element.Icon} <br />
+              {element.Name}
+            </DonationWay>
+          )}
+      </DonationWays>
       <Footer />
     </>
   )

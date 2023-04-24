@@ -30,6 +30,7 @@ const Pets = styled.div`
   flex-direction: row;
   flex-wrap: wrap; 
   color: #ffd801;
+  margin: 3%;
   justify-content: space-around;
 
 `;
@@ -59,11 +60,10 @@ const PresentationContent = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   padding-top: 100px;
-  background: -webkit-gradient(linear, left top, right top, from(#ffa722), to(#ffd801)) no-repeat;;
+  background: -webkit-gradient(linear, left top, right top, from(#ffa722), to(#ffd801)) no-repeat;
 `;
 const DogAndCat = styled.img`
   max-width: 100%;
-  /* background-color: #FD841F; */
 `;
 
 const DivContent = styled.div`
@@ -83,6 +83,15 @@ const AboutDonation = styled.div`
   margin-top: -115px;
   background-color: #ffff;
   border-radius: 40px;
+  z-index: 0;
+`;
+
+const Div = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  
 `;
 
 
@@ -146,10 +155,7 @@ const Petlist = [
     Gender: "Masculino",
     Image: DogM5
   }
-]
-
-
-
+];
 
 
 export default function Adoption() {
@@ -160,20 +166,28 @@ export default function Adoption() {
   }
 
   return (
-    <Fragment>
+    <>
       <Navbar />
-      <PresentationContent>
-        <Title>Não compre, <h1 style={{ "maxWidth": "100%" }}>adote!</h1></Title>
-        <DogAndCat src={CatAndDogAdoption} />
-      </PresentationContent>
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: -50, opacity: 0 }}
+        transition={{ delay: 0.2, duration: 1.3 }}
+      >
+        <PresentationContent>
+          <Title>Não compre, <h1 style={{ "maxWidth": "100%" }}>adote!</h1></Title>
+          <DogAndCat src={CatAndDogAdoption} />
+        </PresentationContent>
+
+      </motion.div>
       <DivContent>
         <AboutDonation>
           <Subtitles>Sobre <HiOutlineInformationCircle /></Subtitles>
           <p>{textContent.AboutDonation}</p>
         </AboutDonation>
-        <div style={{ "display": "flex" }}>
-          <h2 style={{ "alignSelf": "center" }}> Atuais moradores da casa </h2>
-        </div>
+        <Div>
+          <Subtitles style={{ "alignSelf": "center" }}> Atuais moradores da casa </Subtitles>
+        </Div>
         <Pets>
           {
             Petlist.map((element) =>
@@ -183,7 +197,8 @@ export default function Adoption() {
                 "borderStyle": "solid",
                 "cursor": "pointer",
                 "borderRadius": "20px",
-                "width": "30ch"
+                "width": "30ch",
+                "margin": "1.5%"
               }}
                 variants={parent}
                 initial="variantA"
@@ -205,6 +220,6 @@ export default function Adoption() {
         </Pets>
       </DivContent>
       <Footer />
-    </Fragment>
+    </>
   )
 }
