@@ -43,15 +43,12 @@ const MainTitle = styled.h1`
   max-width: 100%;
   padding: auto;
   font-size: 7ch;
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Jost', sans-serif;
   text-transform: uppercase;
   color:#ffff;
   align-self: center;
-  margin: 10%;
-   @media (max-width: 999px) {
-    padding-top: 100px;
-    margin-bottom: 15%;
-  }
+  margin: 5%;
+  padding-top: 100px;
   
 `;
 
@@ -90,10 +87,10 @@ const EventSubtitle = styled.h2`
 const Img = styled.img`
   padding-top: 100px;
   max-width: 100%;
-  margin: 3%;
-  @media (max-width: 999px) {
-    display: none;
-  }
+  width: 350px;
+  margin: 5%;
+  align-self: center;
+  margin-top: -10%;
 `;
 const Subtitle = styled.div`
   display: flex;
@@ -157,7 +154,7 @@ export default function Events() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -50, opacity: 0 }}
           transition={{ delay: 0.2, duration: 1.3 }}
-          style={{ "display": "flex", "flexDirection": "row" }}
+          style={{ "display": "flex", "flexDirection": "column" }}
         >
           <MainTitle>Saiba mais sobre nossos eventos!</MainTitle >
           <Img src={DogSit} />

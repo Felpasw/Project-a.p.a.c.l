@@ -43,7 +43,7 @@ const Title = styled.h1`
   margin: auto;
   padding: auto;
   font-size: 6ch;
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Jost', sans-serif;
   text-transform: uppercase;
   right: auto;
   color:  #ffff;
@@ -175,7 +175,7 @@ export default function Adoption() {
         transition={{ delay: 0.2, duration: 1.3 }}
       >
         <PresentationContent>
-          <Title>Não compre, <h1 style={{ "maxWidth": "100%" }}>adote!</h1></Title>
+          <Title>Não compre, <h1 style={{ "maxWidth": "100%", "fontFamily": "Jost" }}>adote!</h1></Title>
           <DogAndCat src={CatAndDogAdoption} />
         </PresentationContent>
 

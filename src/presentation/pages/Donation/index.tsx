@@ -24,14 +24,15 @@ const Subtitle = styled.h1`
   align-self: center;
   color:  #ad78fc;
   text-transform: uppercase; 
-  margin: auto;
-  padding: auto;
+  padding-top: 150px;
 `;
 const Title = styled.h1`
   align-self: center;
   max-width: 100%;
   font-size: 7ch;
   align-self: center;
+  margin-bottom: -6%;
+  font-family: 'Jost', sans-serif;
   color:  #ffff;
   text-transform: uppercase; 
 `;
@@ -40,9 +41,7 @@ const Title = styled.h1`
 const Img = styled.img`
  align-self: center; 
  max-width: 100%;
- width: 500px;
  padding-top: 100px;
- margin: auto;
  margin-right: 5%;
 `;
 
@@ -54,6 +53,9 @@ const DonationWays = styled.div`
   margin: auto;
   padding: auto;
   flex-wrap: wrap;
+  margin-top: -7%;
+  background-color: #ffff;
+  border-radius: 100px;
 `;
 const DonationWay = styled.button`
   padding: auto;
@@ -130,11 +132,10 @@ export default function Donation() {
 
           }}
         >
-          <Title> Nos ajude a ajudar! </Title>
-          <img src={CatsAndDogs} />
+          <Title> Nos ajude a ajudar!   </Title>
+          <Img src={CatsAndDogs} />
         </motion.div>
       </TitleContent>
-
       <DonationWays>
         <Subtitle>Formas de contribuição: </Subtitle>
         {
