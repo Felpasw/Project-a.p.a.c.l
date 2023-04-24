@@ -13,7 +13,7 @@ import AboutUs from '../../components/AboutUs';
 const Title = styled.h1`
   max-width: 100%;
   font-size: 5ch;
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Jost', sans-serif;
   text-transform: uppercase;
   padding-right: 3ch;
   position: relative;
@@ -95,7 +95,7 @@ export default function InitialPage() {
               ease: [0, 0.2, 0.2, 1.01]
             }}
           >
-            <Title> Associação Protetora de Animais de Campo Largo</Title>
+            <Title> Associação Protetora dos Animais de Campo Largo</Title>
 
           </motion.div>
           <motion.div style={{ "marginLeft": "40px" }}

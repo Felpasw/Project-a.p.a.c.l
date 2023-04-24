@@ -2,9 +2,8 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import styled from 'styled-components';
 
-import { Fragment, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { IoIosArrowDown } from 'react-icons/io';
+import { Fragment } from 'react';
+import { motion } from 'framer-motion';
 
 import DogSit from '../../assets/DogSit.png';
 import CatEating from '../../assets/CatEating.png';
@@ -112,10 +111,6 @@ const MainContent = styled.div`
   background: -webkit-gradient(linear, left top, right top, from(#006d8f), to(#00bfe0)) no-repeat;
   
 `;
-
-//aumentar padding, espaçar mais o texto centralizado e diminuir a imagem
-
-
 
 
 function Itens({ About, Local, title, Date }: { About: string, Local: JSX.Element, title: string, Date: string }) {
