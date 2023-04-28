@@ -100,7 +100,7 @@ const Subtitle = styled.div`
   justify-content: center;
   border-radius: 12%;
   margin-top: -10.2%;
-  background-color: #ffff;
+  background-color: inherit;
   z-index: 0;
 
 `
