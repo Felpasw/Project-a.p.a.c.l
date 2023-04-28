@@ -38,6 +38,9 @@ const Img = styled.img`
  align-self: center; 
  max-width: 100%;
  margin-right: 5%;
+   @media (max-width: 999px) {
+    margin-bottom: -10%;
+  }
 `;
 
 const DonationWays = styled.div`
