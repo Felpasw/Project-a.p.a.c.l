@@ -29,6 +29,7 @@ const Img = styled.img`
   max-width: 100%;
   float: center;
   padding: auto;
+  width: 500px;
 `;
 
 const CatImage2 = styled.img`
