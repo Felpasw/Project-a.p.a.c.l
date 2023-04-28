@@ -34,6 +34,7 @@ const Title = styled.h1`
   text-transform: uppercase;
   right: auto;
   color:#ffa722;
+
 `;
 
 const MainTitle = styled.h1`
@@ -90,7 +91,10 @@ const Img = styled.img`
   margin: 5%;
   align-self: center;
   margin-top: -10%;
-`;
+  @media (max-width: 999px) {
+    margin-bottom: -0.2%;
+  }
+  `;
 const Subtitle = styled.div`
   display: flex;
   justify-content: center;
@@ -104,6 +108,7 @@ const CatImage = styled.img`
   border-radius: 100%;
   background-color:  #ffa722;
   align-self: center;
+  max-width: 100%;
   padding: auto;
   margin: auto; 
 `;

@@ -8,15 +8,29 @@ const Content = styled.div`
   max-width: 100%;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   padding-top: 5%;
 `;
 const Title = styled.h1`
   color: red;
   font-size: 300px;
+  margin: 5%;
+  align-self: center;
+  font-family: 'Jost', sans-serif;
+  @media (max-width: 999px) {
+    font-size: 250px;
+  }
 `;
 const Div = styled.div`
   display: flex;
   flex-direction: row;
+  align-self: center;
+  margin: 3%;
+  @media (max-width: 999px) {
+    flex-direction: column;
+      overflow: scroll;
+  }
+  
 `;
 const Button = styled.button`
   padding: auto;
@@ -42,7 +56,10 @@ const Button = styled.button`
 
 const Img = styled.img`
   max-width: 100%;
-  width: 500px;
+  width: 550px;
+  @media (max-width: 999px) {
+    margin-bottom: -20%;
+  }
 `;
 
 
@@ -51,7 +68,7 @@ export default function ErrorPage() {
   return (
     <Content>
       <Div>
-        <Img style={{ "padding": "9%" }} src={ScaredCat} />
+        <Img src={ScaredCat} />
         <div style={{ "display": "flex", "flexDirection": "column" }}>
           <Title> 404</Title>
           <h2>Ops..Parece que não encontramos a página que você procura :(</h2>
