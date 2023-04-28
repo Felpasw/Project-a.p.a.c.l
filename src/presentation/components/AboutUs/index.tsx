@@ -61,7 +61,7 @@ const CatImage = styled.img`
 `;
 
 const HorseImage = styled.img`
-  margin:auto;
+  margin: auto;
   width: 330px;
   max-width: 100%;
   float: center;

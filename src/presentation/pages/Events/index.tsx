@@ -100,9 +100,8 @@ const Subtitle = styled.div`
   justify-content: center;
   border-radius: 12%;
   margin-top: -10.2%;
-  background-color: inherit;
+  background-color: #ffff;
   z-index: 0;
-
 `
 const CatImage = styled.img`
   border-radius: 100%;
@@ -145,7 +144,7 @@ function Itens({ About, Local, title, Date }: { About: string, Local: JSX.Elemen
 export default function Events() {
 
   return (
-    <Fragment>
+    <>
       <Navbar />
       <MainContent>
         <motion.div
@@ -173,6 +172,6 @@ export default function Events() {
         <CatImage src={CatEating} />
       </div>
       <Footer />
-    </Fragment>
+    </>
   )
 }
