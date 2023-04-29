@@ -142,7 +142,7 @@ export default function Navbar() {
                 exit={{ x: 300, opacity: 0 }}
                 transition={{ delay: 2, duration: 0.5 }}
               >
-                <NavItems href="/Donation">Doações</NavItems>
+                <NavItems href="/Contribute">Contribua</NavItems>
               </motion.li>
               <motion.li style={{ "letterSpacing": "3px", "marginLeft": "32px" }}
                 initial={{ x: 0, opacity: 0 }}

@@ -34,7 +34,6 @@ const Div = styled.div`
 `;
 const Img = styled.img` 
   max-width: 100%;
-  /* background-color:rgb(0,255,171); */
   background: -webkit-gradient(linear, left top, right top, from(#ffa722), to(#ffd801)) no-repeat;
   border-radius: 150%;
   margin: auto;
@@ -67,11 +66,11 @@ const Button = styled.button`
   width: 100px;
   height: 60px;
   background: transparent;
-  border: 1px solid #ffa722;
+  border: 3px solid #ffa722;
   outline: none;
-  transition: 1s ease-in-out;
+  transition: 0.15s ease-in-out;
   &:hover {
-    transition: 1s ease-in-out;
+    transition: 0.15s ease-in-out;
     background: #ffa722;
     color: #ffff;
 }
@@ -117,7 +116,7 @@ export default function InitialPage() {
               delay: 4,
             }}
           >
-            <Button><a href='/Donation' style={{ "textDecoration": "none", "color": "inherit" }}>Saiba mais</a></Button>
+            <Button><a href='/Donation' style={{ "textDecoration": "none", "color": "inherit" }}> <b>Saiba mais</b></a></Button>
           </motion.div>
         </Titles>
         <motion.div style={{ "alignSelf": "end" }}

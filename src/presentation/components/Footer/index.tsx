@@ -46,7 +46,7 @@ const Subtitles = styled.h3`
   margin: auto;
   padding: auto;
   margin: 10px;
-`
+`;
 
 
 export default function Footer() {

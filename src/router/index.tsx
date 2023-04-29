@@ -2,7 +2,7 @@ import { createBrowserRouter, createRoutesFromElements, Route } from 'react-rout
 import AboutUs from '../presentation/components/AboutUs';
 import Adoption from '../presentation/pages/Adoption';
 import InitialPage from '../presentation/pages/initialPage';
-import Donation from '../presentation/pages/Donation';
+import Contribute from '../presentation/pages/Contribute';
 import Events from '../presentation/pages/Events';
 import ErrorPage from '../presentation/pages/ErrorPage';
 
@@ -11,7 +11,7 @@ const router = createBrowserRouter(
     <>
       <Route element={<InitialPage />} path="/" />
       <Route element={<Adoption />} path="/Adoption" />
-      <Route element={<Donation />} path="/Donation" />
+      <Route element={<Contribute />} path="/Contribute" />
       <Route element={<Events />} path="/Events" />
       <Route element={<ErrorPage />} path="*" />
 

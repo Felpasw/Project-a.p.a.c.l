@@ -7,6 +7,7 @@ import { RiBillFill, RiMoneyDollarCircleFill } from 'react-icons/ri';
 import { GiTwoCoins } from 'react-icons/gi';
 import { MdPeopleAlt } from 'react-icons/md';
 import { motion } from 'framer-motion';
+import AboutContribute from '../../components/WayToContribute';
 
 
 
@@ -17,6 +18,7 @@ const Subtitle = styled.h1`
   max-width: 100%;
   font-size: 4ch;
   align-self: center;
+  font-family: 'Jost', sans-serif;
   color:  #ffa722;
   text-transform: uppercase; 
   padding-top: 150px;
@@ -43,7 +45,7 @@ const Img = styled.img`
   }
 `;
 
-const DonationWays = styled.div`
+const ContributeWays = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,35 +57,14 @@ const DonationWays = styled.div`
   background-color: #ffff;
   border-radius: 100px;
 `;
-const DonationWay = styled.button`
-  padding: auto;
-  margin-top: 15px;
-  align-self:center;
-  border-radius: 90px;
-  color: #ffa722;
-  font-size: 18px;
-  font-weight: 100;
-  cursor: pointer;
-  max-width: 100%;
-  height: 60px;
-  width: 300px;
-  background: transparent;
-  border: 1px solid #ffa722;
-  outline: none;
-  transition: 0.5s ease-in-out;
-  &:hover {
-    transition: 0.5s ease-in-out;
-    background: #ffa722;
-    color: #ffff
-}
-`;
+
 
 const TitleContent = styled.div`
   padding-top: 100px;
   background: -webkit-gradient(linear, left top, right top, from(#ffa722), to(#ffd801)) no-repeat;
 `;
 
-const DonationWaysList =
+const ContributeWaysList =
   [
     {
       Name: "Ajuda monetária",
@@ -114,7 +95,7 @@ const DonationWaysList =
   ]
 
 
-export default function Donation() {
+export default function Contribute() {
   return (
     <>
       <Navbar />
@@ -138,18 +119,14 @@ export default function Donation() {
           <Img src={CatsAndDogs} />
         </motion.div>
       </TitleContent>
-      <DonationWays>
+      <ContributeWays>
         <Subtitle>Formas de contribuição: </Subtitle>
         {
-          DonationWaysList.map((element) =>
-            <DonationWay>
-              <a href={`/:${element.Link}`} style={{ "textDecoration": "none", "color": "inherit" }}>
-                {element.Icon} <br />
-                {element.Name}
-              </a>
-            </DonationWay>
+          ContributeWaysList.map((element) =>
+            <AboutContribute Icon={element.Icon} Name={element.Name} />
+
           )}
-      </DonationWays>
+      </ContributeWays>
       <Footer />
     </>
   )

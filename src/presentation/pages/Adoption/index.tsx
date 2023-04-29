@@ -50,10 +50,10 @@ const Title = styled.h1`
 `
 const Img = styled.img`
   max-width: 100%;
-  border-radius: 100%;
-  margin:auto;
-  padding:auto;
-
+  width: 240px;
+  margin: 5%;
+  border-radius: 20px;
+  box-shadow: 1px 5px 5px gray;
 `;
 const PresentationContent = styled.div`
   display: flex;
@@ -71,7 +71,7 @@ const DivContent = styled.div`
   flex-direction: column;
 `;
 const Subtitles = styled.h1`
-  color: #ffd801;
+  color: #ffa722;
  
 `;
 const AboutDonation = styled.div`
@@ -90,80 +90,115 @@ const Div = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-
-  
 `;
 
+const Button = styled.button`
+  margin: 5%;
+  padding: auto;
+  margin-top: 15px ;
+  align-self:center;
+  border-radius: 100px;
+  color: #ffa722;
+  font-size: 18px;
+  cursor: pointer;
+  max-width: 100%;
+  width: 200px;
+  height: 60px;
+  background: transparent;
+  border: 3px solid #ffa722;
+  outline: none;
+  transition: 0.15s ease-in-out;
+  &:hover {
+    transition: 0.15s ease-in-out;
+    background: #ffa722;
+    color: #ffff;
+}`;
+
+
+const Container = styled.div`
+  margin: 2%;
+  color: #23232e;
+`;
 
 const Petlist = [
   {
     Type: "Cachorro(a)",
+    Name: "Carina",
     Castrated: "Não",
     Vacines: "Nenhuma",
     Gender: "Feminino",
-    Image: DogF
+    Date: new Date().toLocaleDateString(),
+    Image: DogF,
+
   },
   {
     Type: "Cachorro(a)",
+    Name: "Beringela",
     Castrated: "Não",
     Vacines: "Nenhuma",
     Gender: "Feminino",
+    Date: new Date().toLocaleDateString(),
     Image: DogF2
   },
   {
     Type: "Cachorro(a)",
+    Name: "Cheedar",
     Castrated: "Não",
     Vacines: "Nenhuma",
     Gender: "Masculino",
+    Date: new Date().toLocaleDateString(),
     Image: DogM
   },
   {
     Type: "Cachorro(a)",
+    Name: "Chico",
     Castrated: "Não",
     Vacines: "Nenhuma",
     Gender: "Masculino",
+    Date: new Date().toLocaleDateString(),
     Image: DogM1
   },
   {
     Type: "Cachorro(a)",
+    Name: "Rodolfo",
     Castrated: "Não",
     Vacines: "Nenhuma",
     Gender: "Masculino",
+    Date: new Date().toLocaleDateString(),
     Image: DogM2
   },
   {
     Type: "Cachorro(a)",
+    Name: "Alvin",
     Castrated: "Não",
     Vacines: "Nenhuma",
     Gender: "Masculino",
+    Date: new Date().toLocaleDateString(),
     Image: DogM3
 
   },
   {
     Type: "Cachorro(a)",
-    Icon: <TbDog />,
+    Name: "Carlos",
     Castrated: "Não",
     Vacines: "Nenhuma",
     Gender: "Masculino",
+    Date: new Date().toLocaleDateString(),
     Image: DogM4
   },
   {
     Type: "Cachorro(a)",
-    Icon: <TbDog />,
+    Name: "Ronaldo",
     Castrated: "Não",
     Vacines: "Nenhuma",
     Gender: "Masculino",
+    Date: new Date().toLocaleDateString(),
     Image: DogM5
   }
 ];
 
 
 export default function Adoption() {
-  const parent = {
-    variantA: { scale: 1, opacity: 1 },
-    variantB: { scale: 1.10, opacity: 0.5 }
-
-  }
 
   return (
     <>
@@ -178,7 +213,6 @@ export default function Adoption() {
           <Title>Não compre, <h1 style={{ "maxWidth": "100%", "fontFamily": "Jost" }}>adote!</h1></Title>
           <DogAndCat src={CatAndDogAdoption} />
         </PresentationContent>
-
       </motion.div>
       <DivContent>
         <AboutDonation>
@@ -191,30 +225,30 @@ export default function Adoption() {
         <Pets>
           {
             Petlist.map((element) =>
-
-              <motion.div style={{
-                "border": "3px, #4444",
-                "borderStyle": "solid",
-                "cursor": "pointer",
-                "borderRadius": "20px",
-                "width": "30ch",
-                "margin": "1.5%"
-              }}
-                variants={parent}
-                initial="variantA"
-                whileHover="variantB">
-                <Img src={element.Image} alt="" />
-
-                {element.Type === "Gato" ?
-                  <h1>{element.Type}<GiHollowCat /></h1> :
-                  <h1>{element.Type}<TbDog /></h1>
-                }
-                {element.Gender === "Masculino" ?
-                  <h2>Sexo: {element.Gender} <BsGenderMale /></h2> :
-                  <h2>Sexo: {element.Gender} <BsGenderFemale /></h2>
-                }
-
-              </motion.div>
+              <Container>
+                <motion.div
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.2, duration: 0.5 }}
+                  whileHover={{ y: -30 }}
+                  style={{
+                    "width": "30ch",
+                    "margin": "1.5%"
+                  }}
+                >
+                  <Img src={element.Image} alt="" />
+                  {element.Type === "Gato" ?
+                    <h1 style={{ "margin": "5%" }}>Conheça {element.Name}!<GiHollowCat /></h1> :
+                    <h1 style={{ "margin": "5%" }}>Conheça {element.Name}! <TbDog /></h1>
+                  }
+                  {element.Gender === "Masculino" ?
+                    <h3 style={{ "margin": "5%" }}>Sexo: {element.Gender} <BsGenderMale style={{ "color": "blue" }} /></h3> :
+                    <h3 style={{ "margin": "5%" }}>Sexo: {element.Gender} <BsGenderFemale style={{ "color": "hotpink" }} /></h3>
+                  }
+                  <h3 style={{ "margin": "5%", "fontFamily": "Jost" }}>Na casa desde: {element.Date}</h3>
+                  <Button> <b>Conheça minha história!</b></Button>
+                </motion.div>
+              </Container>
             )
           }
         </Pets>
