@@ -116,7 +116,7 @@ export default function InitialPage() {
               delay: 4,
             }}
           >
-            <Button><a href='/Donation' style={{ "textDecoration": "none", "color": "inherit" }}> <b>Saiba mais</b></a></Button>
+            <Button><a href='/Contribute' style={{ "textDecoration": "none", "color": "inherit" }}> <b>Saiba mais</b></a></Button>
           </motion.div>
         </Titles>
         <motion.div style={{ "alignSelf": "end" }}

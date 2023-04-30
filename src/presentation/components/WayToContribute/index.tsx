@@ -1,8 +1,8 @@
+import { motion } from 'framer-motion';
 import { useState } from 'react';
 import styled from 'styled-components';
-
-
-
+import { FaWindowClose } from 'react-icons/fa';
+import * as textContent from '../../text-content';
 
 const ContributeWay = styled.button`
   padding: auto;
@@ -27,15 +27,73 @@ const ContributeWay = styled.button`
 }
 `;
 const Div = styled.div`
-  width: 100vh;
-  height: 100vh;
-  background-color: #ffff;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  width: 150vh;
+  max-width: 100%;
+  height: 90vh;
+  top: 10vh;
+  left: 40vh;
+  right: 40vh;
+  left: 30vh;
+  align-self: center;
+  margin-right: 180%;
+  background-color: #23232e;
+  position: fixed;
   z-index: 0;
+  align-self: center;
+  border-radius: 8px;
+  @media (max-width: 999px) {
+    width: 70vh;
+    height: 75vh;
+    top: 16vh;
+    margin: 0.01vh;
+    margin-bottom: 180ch;
+    align-self: center;
+    margin-right: 180%;  
+    left: 20vh;
+    }
 `;
 
-function AboutContribute(Props: { Name: String }) {
-  return (<Div>{Props.Name}</Div>)
-}
+const Title = styled.h1`
+  align-self: center;
+  font-family: 'Jost', sans-serif;
+  margin: 5%;
+  color: #ffa722;
+  font-size: 12vh;
+  max-width: 100%;
+  @media (max-width: 999px) {
+    font-size: 40px ;
+    }
+`;
+
+const Subtitle = styled.h2`
+  align-self: center;
+  margin: 5%;
+  color: aliceblue;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const CloseIcon = styled.h1`
+  align-self: flex-end;
+  color:#ffa722;
+  margin: 2%;
+`;
+
+const AboutContent = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Carousel = styled.div`
+  
+`;
+
 
 export default function WayToContribute(Props: { Name: string, Icon: JSX.Element }) {
   const [isShown, setIsShown] = useState(false);
@@ -43,15 +101,32 @@ export default function WayToContribute(Props: { Name: string, Icon: JSX.Element
 
   return (
     <>
-      <ContributeWay onClick={toggle}>
+      {isShown ?
+        <motion.div style={{ "display": "flex" }}>
+          <Div>
+            <CloseIcon onClick={toggle} style={{ "cursor": "pointer" }}><FaWindowClose /></CloseIcon>
+            <Title>{Props.Name}</Title>
+            <Container>
+              <AboutContent>
+                <Subtitle>Como funciona?</Subtitle>
+                <h4 style={{ "margin": "5%" }}>{textContent.AboutDonation}</h4>
+              </AboutContent>
+              <Carousel></Carousel>
+            </Container>
+          </Div>
+        </motion.div> :
+        <></>
+      }
+      <ContributeWay onClick={toggle} >
         {Props.Icon}<br />
         {Props.Name}
       </ContributeWay>
+      {/* // <ContributeWay style={{ "cursor": "not-allowed" }} >
+        //   {Props.Icon}<br />
+        //   {Props.Name}
+        // </ContributeWay> */}
 
-      {isShown ?
-        <AboutContribute Name={Props.Name} /> :
-        <></>
-      }
+
     </>
 
   )
