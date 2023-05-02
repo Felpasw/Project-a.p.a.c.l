@@ -7,8 +7,9 @@ import { RiBillFill, RiMoneyDollarCircleFill } from 'react-icons/ri';
 import { GiTwoCoins } from 'react-icons/gi';
 import { MdPeopleAlt } from 'react-icons/md';
 import { motion } from 'framer-motion';
-import AboutContribute from '../../components/WayToContribute';
-
+import * as textContent from '../../text-content';
+import IMG1 from '../../assets/ContributeContent/IMG1.png';
+import IMG2 from '../../assets/ContributeContent/IMG2.png';
 
 
 
@@ -58,6 +59,46 @@ const ContributeWays = styled.div`
   border-radius: 100px;
 `;
 
+const ContributeWayTitle = styled.h1`
+  font-family: 'Jost', sans-serif;
+  color:  #ffa722;
+`;
+
+const ContributeWay = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 5%;
+`;
+
+const ContributeWayContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
+
+const Carousel = styled.div`
+  width: 35rem;
+  height: 22rem;
+  position: relative;
+  display: flex;
+  margin: 5%;
+  overflow: auto;
+  scroll-snap-type: x mandatory;
+`;
+
+const CarouselImages = styled.img`
+  width: 100%;
+  height: 100%;
+  position: sticky;
+  left: 0;
+  flex-shrink: 0;
+  object-fit: cover;
+  scroll-snap-align: start;
+`;
+
 
 const TitleContent = styled.div`
   padding-top: 100px;
@@ -69,33 +110,35 @@ const ContributeWaysList =
     {
       Name: "Ajuda monetária",
       Icon: <RiMoneyDollarCircleFill />,
-      Link: "Dinheiro"
+      // Images: [IMG1, IMG2]
     },
     {
       Name: "Ajude por meio da conta de luz",
       Icon: <RiBillFill />,
-      Link: "Conta"
+      // Images: [IMG1, IMG2]
     },
     {
       Name: "Doe ração ou outros recursos",
       Icon: <FaBone />,
-      Link: "Racao"
+      // Images: [IMG1, IMG2]
     },
     {
       Name: "Doe suas notas fiscais",
       Icon: <GiTwoCoins />,
-      Link: "Notas"
+      // Images: [IMG1, IMG2]
     },
     {
       Name: "Seja um voluntário",
       Icon: <MdPeopleAlt />,
-      Link: "Voluntario"
+      // Images: [IMG1, IMG2] 
     }
 
   ]
 
 
 export default function Contribute() {
+
+
   return (
     <>
       <Navbar />
@@ -123,11 +166,24 @@ export default function Contribute() {
         <Subtitle>Formas de contribuição: </Subtitle>
         {
           ContributeWaysList.map((element) =>
-            <AboutContribute Icon={element.Icon} Name={element.Name} />
+            <ContributeWay>
+              <ContributeWayTitle> {element.Name} {element.Icon} </ContributeWayTitle>
+              <ContributeWayContent>
+                <div style={{ "display": "flex", "flexDirection": "column" }}>
+                  <h2>Como funciona?</h2>
+                  <p>{textContent.Queries} </p>
+                </div>
+                <Carousel>
 
-          )}
+                </Carousel>
+              </ContributeWayContent>
+            </ContributeWay>
+          )
+
+        }
       </ContributeWays>
       <Footer />
     </>
   )
 }
+export { ContributeWaysList } 
