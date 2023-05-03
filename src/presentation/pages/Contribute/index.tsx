@@ -7,7 +7,7 @@ import { FaBone } from 'react-icons/fa';
 import { RiBillFill, RiMoneyDollarCircleFill } from 'react-icons/ri';
 import { GiBottleCap, GiTwoCoins } from 'react-icons/gi';
 import { MdPeopleAlt } from 'react-icons/md';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll } from 'framer-motion';
 
 import * as textContent from '../../text-content';
 
@@ -16,20 +16,23 @@ import MoneyCat from '../../assets/MoneyCat.png';
 import CatsAndDogs from '../../assets/CatsAndDogs.png';
 import DogAndCat from '../../assets/DogAndCat.png';
 import Puppy from '../../assets/Puppy.png'
+import CatLookingUp from '../../assets/CatLookingUp.png'
+
 import { useState } from 'react';
-import { BsFillArrowLeftSquareFill, BsFillArrowRightSquareFill } from 'react-icons/bs';
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 
 
 const Subtitle = styled.h1`
   align-self: center;
   max-width: 100%;
-  font-size: 4ch;
+  font-size: 7vh;
   align-self: center;
   font-family: 'Jost', sans-serif;
   color:  #ffa722;
   text-transform: uppercase; 
   padding-top: 150px;
 `;
+
 const Title = styled.h1`
   align-self: center;
   max-width: 100%;
@@ -41,7 +44,6 @@ const Title = styled.h1`
   color:  #ffff;
   text-transform: uppercase; 
 `;
-
 
 const Img = styled.img`
  align-self: center; 
@@ -70,7 +72,7 @@ const ContributeWayTitle = styled.h1`
   color:  #ffa722;
   align-self: center;
   font-size: 4vh;
-  margin: 5%;
+  margin: 7%;
 `;
 
 const ContributeWay = styled.div`
@@ -89,26 +91,7 @@ const ContributeWayContent = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   margin: 5%;
-`;
-
-const Carousel = styled.div`
-  width: 35rem;
-  height: 22rem;
-  position: relative;
-  display: flex;
-  margin: 5%;
-  overflow: auto;
-  scroll-snap-type: x mandatory;
-`;
-
-const CarouselImages = styled.img`
-  width: 100%;
-  height: 100%;
-  position: sticky;
-  left: 0;
-  flex-shrink: 0;
-  object-fit: cover;
-  scroll-snap-align: start;
+  
 `;
 
 const ContributeWayImage = styled.img`
@@ -119,7 +102,7 @@ const ContributeWayImage = styled.img`
   align-self: center;
   background: -webkit-gradient(linear, left top, right top, from(#ffa722), to(#ffd801)) no-repeat;
   padding: 3%;
-`
+`;
 
 const TitleContent = styled.div`
   padding-top: 100px;
@@ -131,84 +114,109 @@ const Content = styled.div`
   flex-direction: row;
   width: 100%;
 `;
-const Icons = styled.h1`
+
+const CatImage = styled.img`
+  max-width: 100%;
+  padding: 5%;
+  margin: 0.6%;
+  z-index: 0;
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(0 0 0 / 90%)); 
+        filter: drop-shadow(0px 0px 5px rgba(0 0 0 / 90%));
+`;
+
+const Icons = styled.button`
+  padding: 2%;
+  margin-left: 1%;
+  display: flex;
+  align-self:center;
+  border-radius: 20px;
   color: #ffa722;
-  align-self: center;
-  margin: 5%;
-  font-size: 50px;
+  font-size: 18px;
+  font-weight: 100;
   cursor: pointer;
-`
+  max-width: 100%;
+  width: 100px;
+  height: 60px;
+  background: transparent;
+  border: 3px solid #ffa722;
+  outline: none;
+  transition: 0.15s ease-in-out;
+  &:hover {
+    transition: 0.15s ease-in-out;
+    background: #ffa722;
+    color: #ffff;
+}
+`;
+
+const ParnershipsTitle = styled.h1`
+  font-size: 5vh;
+  align-self: center;
+  max-width: 100%;
+  font-family: 'Jost', sans-serif;
+  color:  #ffa722;
+  text-transform: uppercase; 
+`;
+
 
 const ContributeWaysList =
   [
     {
-      Name: "Ajuda monetária",
-      Icon: <RiMoneyDollarCircleFill />,
-      Image: MoneyCat,
-      textContent: ""
+      Name: <>Ajuda monetária <RiMoneyDollarCircleFill /></>,
+      textContent: textContent.Queries
     },
     {
-      Name: "Ajude por meio da conta de luz",
-      Icon: <RiBillFill />,
-      Image: DogAndCat,
-      textContent: ""
+      Name: <>Conta de luz <RiBillFill /></>,
+      textContent: textContent.Queries
     },
     {
-      Name: "Doe ração ou outros recursos",
-      Icon: <FaBone />,
-      Image: DogEating,
-      textContent: ""
+      Name: <>Doe ração ou outros recursos <FaBone /></>,
+      textContent: textContent.Queries
     },
     {
-      Name: "Doe suas notas fiscais",
-      Icon: <GiTwoCoins />,
-      Image: Puppy,
-      textContent: ""
+      Name: <>Doe notas fiscais <GiTwoCoins /></>,
+      textContent: textContent.Queries
 
     },
     {
-      Name: "Seja um voluntário",
-      Icon: <MdPeopleAlt />,
-      // Image: [IMG1, IMG2]
-      textContent: ""
+      Name: <>Torne-se voluntário(a) <MdPeopleAlt /></>,
+      textContent: textContent.Queries
     },
     {
-      Name: "Doe tampinhas de garrafa",
-      Icon: <GiBottleCap />,
+      Name: <>Doe tampinhas <GiBottleCap /></>,
       //Image:
-      textContent: ""
+      textContent: textContent.AboutBottleCapDonation
     }
 
   ]
 
 const Arr =
   ContributeWaysList.map((element) =>
+
     <ContributeWay>
       <div style={{ "display": "flex", "flexDirection": "row", "flexWrap": "wrap", "width": "100%" }}>
-        <ContributeWayTitle> {element.Name} {element.Icon} </ContributeWayTitle>
-        <ContributeWayImage src={element.Image} />
+        <ContributeWayTitle> {element.Name} </ContributeWayTitle>
+        <ContributeWayImage />
       </div>
 
       <ContributeWayContent>
         <div style={{ "display": "flex", "flexDirection": "column" }}>
           <h2 style={{ "color": "#ffa722" }}>Como funciona? <HiOutlineInformationCircle /></h2>
-          <p style={{ "margin": "5%" }}>{textContent.Queries} </p>
+          <p style={{ "margin": "3%" }}>{element.textContent} </p>
         </div>
       </ContributeWayContent>
       <hr />
     </ContributeWay>
+
   )
 
 
 
-
-
-
-
 export default function Contribute() {
+  // const { scrollYProgress } = useScroll();
+
   const [Element, setElement] = useState(0);
   const changeElement = (num: number) => {
-    let Verify = Element + num
+    let Verify = Element + num;
 
     if (Verify > Arr.length - 1) {
       setElement(0);
@@ -228,6 +236,8 @@ export default function Contribute() {
   }
 
   return (
+
+
     <>
       <Navbar />
       <TitleContent>
@@ -254,15 +264,22 @@ export default function Contribute() {
         <Subtitle>Formas de contribuição: </Subtitle>
       </ContributeWaysSubtitle>
       <Content>
-        <Icons><BsFillArrowLeftSquareFill onClick={() => changeElement(-1)} /></Icons>
+        <Icons onClick={() => changeElement(-1)}><h1 style={{ "alignSelf": "center" }}><AiOutlineArrowLeft /></h1></Icons>
         {Arr[Element]}
-        <Icons><BsFillArrowRightSquareFill onClick={() => changeElement(+1)} /></Icons>
+        <Icons onClick={() => changeElement(+1)}><h1 style={{ "alignSelf": "center" }}><AiOutlineArrowRight /></h1></Icons>
       </Content>
+      <div style={{ "display": "flex", "flexDirection": "row", "flexWrap": "wrap" }}>
+        <motion.div style={{ "margin": "0.6%", "padding": "5%" }}
+          whileInView={{ opacity: 1 }}
+          initial="hidden">
+          <ParnershipsTitle>Conheça também nossas lojas parceiras!</ParnershipsTitle>
+          <hr />
+          <CatImage src={CatLookingUp} alt="" />
+        </motion.div>
+        <div style={{ "margin": "5%", "padding": "5%" }}>
+        </div>
+      </div>
       <Footer />
     </>
   )
 }
-function useRef(arg0: null) {
-  throw new Error('Function not implemented.');
-}
-
