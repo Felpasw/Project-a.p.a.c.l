@@ -7,7 +7,7 @@ import { FaBone } from 'react-icons/fa';
 import { RiBillFill, RiMoneyDollarCircleFill } from 'react-icons/ri';
 import { GiBottleCap, GiTwoCoins } from 'react-icons/gi';
 import { MdPeopleAlt } from 'react-icons/md';
-import { motion, useInView, useScroll } from 'framer-motion';
+import { AnimatePresence, animate, motion, useInView, useScroll } from 'framer-motion';
 
 import * as textContent from '../../text-content';
 
@@ -86,14 +86,6 @@ const ContributeWay = styled.div`
   }
 `;
 
-const ContributeWayContent = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 5%;
-  
-`;
-
 const ContributeWayImage = styled.img`
   border-radius: 5%;
   max-width: 100%;
@@ -127,6 +119,7 @@ const CatImage = styled.img`
 const Icons = styled.button`
   padding: 2%;
   margin-left: 1%;
+  margin-right: 1%;
   display: flex;
   align-self:center;
   border-radius: 20px;
@@ -157,7 +150,6 @@ const ParnershipsTitle = styled.h1`
   text-transform: uppercase; 
 `;
 
-
 const ContributeWaysList =
   [
     {
@@ -174,7 +166,7 @@ const ContributeWaysList =
     },
     {
       Name: <>Doe notas fiscais <GiTwoCoins /></>,
-      textContent: textContent.Queries
+      textContent: textContent.AboutReceiptDonation
 
     },
     {
@@ -190,54 +182,54 @@ const ContributeWaysList =
   ]
 
 const Arr =
-  ContributeWaysList.map((element) =>
-
+  ContributeWaysList.map((element, index) =>
     <ContributeWay>
       <div style={{ "display": "flex", "flexDirection": "row", "flexWrap": "wrap", "width": "100%" }}>
         <ContributeWayTitle> {element.Name} </ContributeWayTitle>
         <ContributeWayImage />
       </div>
-
-      <ContributeWayContent>
-        <div style={{ "display": "flex", "flexDirection": "column" }}>
-          <h2 style={{ "color": "#ffa722" }}>Como funciona? <HiOutlineInformationCircle /></h2>
-          <p style={{ "margin": "3%" }}>{element.textContent} </p>
-        </div>
-      </ContributeWayContent>
+      <div style={{ "display": "flex", "flexDirection": "column" }}>
+        <h2 style={{ "color": "#ffa722" }}>Como funciona? <HiOutlineInformationCircle /></h2>
+        <p style={{ "margin": "3%" }}>{element.textContent} </p>
+      </div>
       <hr />
     </ContributeWay>
-
   )
 
 
 
-export default function Contribute() {
-  // const { scrollYProgress } = useScroll();
 
-  const [Element, setElement] = useState(0);
-  const changeElement = (num: number) => {
-    let Verify = Element + num;
+
+
+export default function Contribute() {
+  const [Position, setPosition] = useState(0);
+  const [isRightClicked, setisRightClicked] = useState(false);
+
+
+
+
+  const changeElement = (num: number, isRightdirection: boolean) => {
+    let Verify = Position + num;
+    setisRightClicked(!isRightdirection);
 
     if (Verify > Arr.length - 1) {
-      setElement(0);
+      setPosition(0);
       console.log(Element);
       return;
     }
     else if (Verify < 0) {
-      setElement(Arr.length - 1);
+      setPosition(Arr.length - 1);
       console.log(Element);
       return;
     }
     else {
-      setElement(Verify);
+      setPosition(Verify);
       console.log(Element);
       return;
     }
   }
 
   return (
-
-
     <>
       <Navbar />
       <TitleContent>
@@ -260,14 +252,65 @@ export default function Contribute() {
           <Img src={CatsAndDogs} />
         </motion.div>
       </TitleContent>
+
       <ContributeWaysSubtitle>
         <Subtitle>Formas de contribuição: </Subtitle>
       </ContributeWaysSubtitle>
+
       <Content>
-        <Icons onClick={() => changeElement(-1)}><h1 style={{ "alignSelf": "center" }}><AiOutlineArrowLeft /></h1></Icons>
-        {Arr[Element]}
-        <Icons onClick={() => changeElement(+1)}><h1 style={{ "alignSelf": "center" }}><AiOutlineArrowRight /></h1></Icons>
+        <Icons onClick={() => changeElement(-1, false)}><h1 style={{ "alignSelf": "center" }}><AiOutlineArrowLeft /></h1></Icons>
+
+        {isRightClicked &&
+          <motion.div
+            key={Position}
+            style={{
+              "display": "flex",
+              "flexDirection": "row",
+              "flexWrap": "wrap",
+              "margin": "5%"
+            }}
+
+            initial={{ x: -300, opacity: 0 }}
+            animate={{
+              x: 0,
+              opacity: 1
+
+            }}
+            transition={{ duration: 0.75 }}
+          >
+            {Arr[Position]}
+
+          </motion.div>
+
+        }
+
+        {!isRightClicked &&
+          <motion.div
+            key={Position}
+            style={{
+              "display": "flex",
+              "flexDirection": "row",
+              "flexWrap": "wrap",
+              "margin": "5%"
+            }}
+
+            initial={{ x: 300, opacity: 0 }}
+            animate={{
+              x: 0,
+              opacity: 1
+
+            }}
+            transition={{ duration: 0.75 }}
+          >
+
+            {Arr[Position]}
+
+          </motion.div>
+        }
+
+        <Icons onClick={() => changeElement(+1, true)}><h1 style={{ "alignSelf": "center" }}><AiOutlineArrowRight /></h1></Icons>
       </Content>
+
       <div style={{ "display": "flex", "flexDirection": "row", "flexWrap": "wrap" }}>
         <motion.div style={{ "margin": "0.6%", "padding": "5%" }}
           whileInView={{ opacity: 1 }}
