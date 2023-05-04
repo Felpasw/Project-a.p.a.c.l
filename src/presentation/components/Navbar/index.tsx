@@ -144,6 +144,7 @@ export default function Navbar() {
       <Logo> A.P.A.C.L<MdOutlinePets /></Logo>
       <AnimatePresence>
         {isVisible && (
+
           <Navlist
 
             initial={{
@@ -155,11 +156,11 @@ export default function Navbar() {
             }}
             transition={{
               duration: 0.5,
-              mode: "wait",
-              when: "afterChildren"
             }}
             exit={{
-              maxHeight: 0
+              maxHeight: 0,
+              transition: { delay: 1.6 }
+
             }}
             key="modal"
 
@@ -188,6 +189,7 @@ export default function Navbar() {
                 </NavItems>
               )}
           </Navlist>
+
 
         )}
       </AnimatePresence>
