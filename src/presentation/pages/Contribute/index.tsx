@@ -71,7 +71,7 @@ const ContributeWayTitle = styled.h1`
   font-family: 'Jost', sans-serif;
   color:  #ffa722;
   align-self: center;
-  font-size: 4vh;
+  font-size: 6vh;
   margin: 7%;
 `;
 
@@ -139,6 +139,12 @@ const Icons = styled.button`
     background: #ffa722;
     color: #ffff;
 }
+@media (max-width:999px) {
+  width: 5vh;
+  
+}
+
+
 `;
 
 const ParnershipsTitle = styled.h1`
@@ -150,14 +156,23 @@ const ParnershipsTitle = styled.h1`
   text-transform: uppercase; 
 `;
 
+const IconText = styled.h1`
+  align-self: center;
+  margin: 4%;
+  @media (max-width: 999px) {
+    width: 2vh;
+    font-size: 15px;
+  }
+`
+
 const ContributeWaysList =
   [
     {
-      Name: <>Ajuda monetária <RiMoneyDollarCircleFill /></>,
+      Name: <>Conceda uma ajuda financeira<RiMoneyDollarCircleFill /></>,
       textContent: textContent.Queries
     },
     {
-      Name: <>Conta de luz <RiBillFill /></>,
+      Name: <>Fatura de energia elétrica <RiBillFill /></>,
       textContent: textContent.Queries
     },
     {
@@ -170,11 +185,11 @@ const ContributeWaysList =
 
     },
     {
-      Name: <>Torne-se voluntário(a) <MdPeopleAlt /></>,
+      Name: <>Torne-se voluntário (a) <MdPeopleAlt /></>,
       textContent: textContent.Queries
     },
     {
-      Name: <>Doe tampinhas <GiBottleCap /></>,
+      Name: <>Doe tampinhas ou lacres <GiBottleCap /></>,
       //Image:
       textContent: textContent.AboutBottleCapDonation
     }
@@ -258,7 +273,7 @@ export default function Contribute() {
       </ContributeWaysSubtitle>
 
       <Content>
-        <Icons onClick={() => changeElement(-1, false)}><h1 style={{ "alignSelf": "center" }}><AiOutlineArrowLeft /></h1></Icons>
+        <Icons onClick={() => changeElement(-1, false)}><IconText><AiOutlineArrowLeft /></IconText></Icons>
 
         {isRightClicked &&
           <motion.div
@@ -308,7 +323,7 @@ export default function Contribute() {
           </motion.div>
         }
 
-        <Icons onClick={() => changeElement(+1, true)}><h1 style={{ "alignSelf": "center" }}><AiOutlineArrowRight /></h1></Icons>
+        <Icons onClick={() => changeElement(+1, true)}><IconText><AiOutlineArrowRight /></IconText></Icons>
       </Content>
 
       <div style={{ "display": "flex", "flexDirection": "row", "flexWrap": "wrap" }}>
