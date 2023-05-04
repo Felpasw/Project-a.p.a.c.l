@@ -23,6 +23,7 @@ const Title = styled.h1`
   align-self: center;
   color:  #23232e;
 `;
+
 const Div = styled.div`
   display: flex;
   flex-direction: row;
@@ -32,27 +33,33 @@ const Div = styled.div`
   }
   
 `;
+
 const Img = styled.img` 
   max-width: 100%;
   background: -webkit-gradient(linear, left top, right top, from(#ffa722), to(#ffd801)) no-repeat;
   border-radius: 150%;
   margin: auto;
   padding: auto;
-  margin-top: 100px;
+  @media (max-width:999px) {
+    padding-top: 105px;    
+  }
   
 `;
+
 const Subtitle = styled.h2`
   font-size: 20px;
   max-width: 100%;
   margin: auto;
   padding: auto;
 `;
+
 const Titles = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 100%;
 
 `;
+
 const Button = styled.button`
   padding: auto;
   margin-top: 15px ;

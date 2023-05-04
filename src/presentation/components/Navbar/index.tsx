@@ -17,9 +17,8 @@ const Nav = styled.nav`
   sans-serif;
   background-color: #23232e;
   width: 100%;
-  position:fixed;
+  position: fixed;
   z-index: 1;
-
 `;
 
 const Navlist = styled(motion.ul)`
