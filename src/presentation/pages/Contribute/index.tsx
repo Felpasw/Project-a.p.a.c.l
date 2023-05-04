@@ -31,6 +31,7 @@ const Subtitle = styled.h1`
   color:  #ffa722;
   text-transform: uppercase; 
   padding-top: 150px;
+  margin: 2%;
 `;
 
 const Title = styled.h1`
