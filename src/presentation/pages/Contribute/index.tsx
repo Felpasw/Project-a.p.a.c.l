@@ -71,8 +71,11 @@ const ContributeWayTitle = styled.h1`
   font-family: 'Jost', sans-serif;
   color:  #ffa722;
   align-self: center;
-  font-size: 6vh;
+  font-size: 5vh;
   margin: 7%;
+  padding: 10%;
+  max-width: 100%;
+  width: 300px;
 `;
 
 const ContributeWay = styled.div`
