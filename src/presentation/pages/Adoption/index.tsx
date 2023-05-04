@@ -232,8 +232,9 @@ export default function Adoption() {
                   transition={{ delay: 0.2, duration: 0.5 }}
                   whileHover={{ y: -30 }}
                   style={{
-                    "width": "30ch",
-                    "margin": "1.5%"
+                    width: "30ch",
+                    margin: "1.5%",
+                    cursor: "pointer"
                   }}
                 >
                   <Img src={element.Image} alt="" />

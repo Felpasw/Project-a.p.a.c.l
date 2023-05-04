@@ -200,7 +200,7 @@ const ContributeWaysList =
   ]
 
 const Arr =
-  ContributeWaysList.map((element, index) =>
+  ContributeWaysList.map((element) =>
     <ContributeWay>
       <div style={{ "display": "flex", "flexDirection": "row", "flexWrap": "wrap", "width": "100%" }}>
         <ContributeWayTitle> {element.Name} </ContributeWayTitle>
