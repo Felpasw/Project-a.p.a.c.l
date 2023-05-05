@@ -11,11 +11,7 @@ import { AnimatePresence, animate, motion, useInView, useScroll } from 'framer-m
 
 import * as textContent from '../../text-content';
 
-import DogEating from '../../assets/DogEating.png';
-import MoneyCat from '../../assets/MoneyCat.png';
 import CatsAndDogs from '../../assets/CatsAndDogs.png';
-import DogAndCat from '../../assets/DogAndCat.png';
-import Puppy from '../../assets/Puppy.png'
 import CatLookingUp from '../../assets/CatLookingUp.png'
 
 import { useState } from 'react';

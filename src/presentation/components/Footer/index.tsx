@@ -48,6 +48,26 @@ const Subtitles = styled.h3`
   margin: 10px;
 `;
 
+const Button = styled.button`
+  margin: 5%;
+  margin-top: 15px;
+  align-self:center;
+  border-radius: 100px;
+  color: #ffff;
+  font-size: 12px;
+  cursor: pointer;
+  width: 115px;
+  height: 35px;
+  background: transparent;
+  border: 3px solid #ffff;
+  outline: none;
+  transition: 0.15s ease-in-out;
+  &:hover {
+    transition: 0.15s ease-in-out;
+    background: #ffff;
+    color: black;
+}`;
+
 
 export default function Footer() {
   return (
@@ -72,6 +92,7 @@ export default function Footer() {
           <Subtitles>Campo Largo e Região metropolitana</Subtitles>
         </Div>
       </Infos>
+      <a href="/SmartBoard"><Button> Acessar sistema </Button></a>
       <Img src={FooterDogImage} />
     </FooterContent>
   )
