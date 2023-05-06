@@ -9,7 +9,7 @@ const StyledInput = styled.input`
   background: transparent;
   transition: padding 0.3s 0.2s ease;
   &:focus{
-    border-bottom: #ffa722 solid 5px ;
+    border-bottom: #ffa722 solid 5px;
   }
 
 `;

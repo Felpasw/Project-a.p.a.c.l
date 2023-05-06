@@ -14,6 +14,9 @@ const Div = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-size : "400% 400%";
+  max-width: 100%;
+  
 `;
 
 const Button = styled.button`  
@@ -34,6 +37,9 @@ const Button = styled.button`
     background: #ffa722;
     color: #ffff;
 }`;
+
+
+
 
 const Label = styled.label`
   font-family: 'Jost', sans-serif;
@@ -62,7 +68,6 @@ export default function SmartBoard() {
     <Div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.6 }}>
 
       <a href="/"><Img src={APACL} /></a>
-
       <h1 style={{ fontFamily: 'Jost' }}>Login</h1>
       <Label htmlFor="User" >Usuário </Label>
       <Input id="User" type='text' onChange={handleChange} value={formValues.User} name='User' />
