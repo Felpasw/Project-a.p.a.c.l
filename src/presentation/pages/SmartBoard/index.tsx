@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import APACL from '../../assets/APACL.png'
 import { Input } from '../../components/InputComponent';
 import { useState } from 'react';
+import Axios, { AxiosResponse } from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Img = styled.img`
@@ -39,14 +42,12 @@ const Button = styled.button`
 }`;
 
 
-
-
 const Label = styled.label`
   font-family: 'Jost', sans-serif;
 `
 
 let zeroState = {
-  User: '',
+  Name: '',
   Password: ''
 }
 
@@ -61,25 +62,35 @@ export default function SmartBoard() {
 
 
   const handleSubimmit = async (e: React.FormEvent) => {
-
+    if (!formValues.Password || !formValues.Name) {
+      toast.error("Preencha todos os campos corretamente!");
+      return;
+    }
+    const login = {
+      Name: formValues.Name,
+      Password: formValues.Password
+    }
+    const Response: AxiosResponse = await Axios.post(`${process.env.REACT_APP_BASE_API_URL}/auth/user`, login);
+    toast.success(`${Response.data.msg}`);
   }
 
   return (
-    <Div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.6 }}>
+    <>
+      <Div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.6 }}>
+        <a href="/"><Img src={APACL} /></a>
+        <h1 style={{ fontFamily: 'Jost' }}>Login</h1>
+        <Label htmlFor="Name" >Usuário </Label>
+        <Input id="Name" type='text' onChange={handleChange} value={formValues.Name} name='Name' />
 
-      <a href="/"><Img src={APACL} /></a>
-      <h1 style={{ fontFamily: 'Jost' }}>Login</h1>
-      <Label htmlFor="User" >Usuário </Label>
-      <Input id="User" type='text' onChange={handleChange} value={formValues.User} name='User' />
+        <Label htmlFor="Password"> Senha </Label>
+        <Input id="Password" type='password' onChange={handleChange} value={formValues.Password} name='Password' />
 
-      <Label htmlFor="Password"> Senha </Label>
-      <Input id="Password" type='password' onChange={handleChange} value={formValues.Password} name='Password' />
-
-      <div style={{ display: "flex", flexDirection: "row" }}>
-        <a href="/" style={{ textDecoration: "none", color: "inherit" }}> <Button> Voltar </Button> </a>
-        <Button onClick={() => handleSubimmit} > Entrar </Button>
-      </div>
-
-    </Div>
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <a href="/" style={{ textDecoration: "none", color: "inherit" }}> <Button> Voltar </Button> </a>
+          <Button onClick={handleSubimmit} > Entrar </Button>
+        </div>
+        <ToastContainer />
+      </Div>
+    </>
   )
 } 

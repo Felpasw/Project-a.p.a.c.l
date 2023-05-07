@@ -11,7 +11,7 @@ import { MdDateRange, MdOutlineShareLocation } from 'react-icons/md';
 import { HiInformationCircle } from 'react-icons/hi';
 
 
-const EventList = [{
+const eventList = [{
   Date: new Date().toLocaleDateString(),
   Title: "Evento de Doação",
   Local:
@@ -163,7 +163,7 @@ export default function Events() {
       </Subtitle>
       <EventsDiv>
         {
-          EventList.map((event) =>
+          eventList.map((event) =>
             <Itens Local={event.Local} About={event.About} title={event.Title} Date={event.Date} />
           )}
       </EventsDiv>

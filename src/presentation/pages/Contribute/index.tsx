@@ -165,7 +165,7 @@ const IconText = styled.h1`
   }
 `
 
-const ContributeWaysList =
+const contributeWaysList =
   [
     {
       Name: <>Conceda uma ajuda financeira<RiMoneyDollarCircleFill /></>,
@@ -197,7 +197,7 @@ const ContributeWaysList =
   ]
 
 const Arr =
-  ContributeWaysList.map((element) =>
+  contributeWaysList.map((element) =>
     <ContributeWay>
       <div style={{ "display": "flex", "flexDirection": "row", "flexWrap": "wrap", "width": "100%" }}>
         <ContributeWayTitle> {element.Name} </ContributeWayTitle>
