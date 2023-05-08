@@ -27,7 +27,7 @@ Após isso no diretório do projeto, vocè pode rodar:
 
 ### `npm run start`
 
-Isso abrira um servidor de desenvolvimento .\
+Isso abrira um servidor de desenvolvimento.\
 Abra [http://localhost:3000](http://localhost:3000) para ver no seu navegador.
 ## Importante ⚠️
 Como é possível visualizar, o site ainda está em produção. Caso você tenha alguma sugestão de refatoração de código ou de desing por favor me contate, muito obrigado!🚀
