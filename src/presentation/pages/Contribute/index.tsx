@@ -7,7 +7,7 @@ import { FaBone } from 'react-icons/fa';
 import { RiBillFill, RiMoneyDollarCircleFill } from 'react-icons/ri';
 import { GiBottleCap, GiTwoCoins } from 'react-icons/gi';
 import { MdPeopleAlt } from 'react-icons/md';
-import { AnimatePresence, animate, motion, useInView, useScroll } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import * as textContent from '../../text-content';
 

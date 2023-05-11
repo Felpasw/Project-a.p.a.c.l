@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import APACL from '../../assets/APACL.png'
+import APACL from '../../assets/APACL.png';
+
 import { Input } from '../../components/InputComponent';
 import { useState } from 'react';
-import Axios, { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
+
+import { Axios } from '../../config/axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 
 const Img = styled.img`
@@ -53,6 +57,7 @@ let zeroState = {
 
 export default function SmartBoard() {
   const [formValues, setFormValues] = useState(zeroState);
+  const navigate = useNavigate();
 
   const handleChange = (e: { target: { name: string; value: string; }; }): void => {
     let name = e.target.name;
@@ -62,17 +67,48 @@ export default function SmartBoard() {
 
 
   const handleSubimmit = async (e: React.FormEvent) => {
+
     if (!formValues.Password || !formValues.Name) {
+
       toast.error("Preencha todos os campos corretamente!");
       return;
+
     }
+
     const login = {
       Name: formValues.Name,
       Password: formValues.Password
     }
-    const Response: AxiosResponse = await Axios.post(`${process.env.REACT_APP_BASE_API_URL}/auth/user`, login);
-    toast.success(`${Response.data.msg}`);
+
+    try {
+
+      console.log(login);
+      const Response: AxiosResponse = await Axios.post('/auth/user', login);
+      console.log(Response);
+      sessionStorage.setItem("token", Response.data.token);
+
+      if (Response.status !== 200) {
+
+        toast.error(`${Response.data.msg}`);
+
+      }
+      else {
+
+        toast.success(`${Response.data.msg}`);
+        navigate("/Restricted");
+
+      }
+
+
+    } catch (error) {
+
+      toast.error("Erro ao realizar login!");
+      console.log(error);
+
+    }
+
   }
+
 
   return (
     <>
