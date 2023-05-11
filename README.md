@@ -1,46 +1,34 @@
-# Getting Started with Create React App
+# project-a.p.a.c.l 🐶
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project-a.p.c.l é um website feito em React para ajudar a <a href="https://www.facebook.com/SPAdeCampoLargoPR/?locale=pt_BR">Associação Protetora de Animais de Campo Largo</a> e a demanda de visibilidade e acessibilidade para divulgarem seus serviços.
 
-## Available Scripts
+## Não precisa clonar ⚠️
+Esse projeto já está em deploy no Vercel. Se você só quer ver o resultado visual dele não precisa clonar o projeto, apenas clique <a href="https://project-a-p-a-c-l.vercel.app">aqui</a>.
 
-In the project directory, you can run:
+## Páginas de navegação ✍️
 
-### `npm start`
+<ul>
+  <li> InitialPage - dividido em dois componentes AboutUs e a própria página que invoca este componente, apresenta a página inicial. </li>
+  <li> Adoption - destinada a apresentar animais na casa, será possível os funcionários alterarem as informações nela</li>
+  <li> Contribute - destinada para apresentar as formas de contribuição da casa. </li>
+  <li> ErrorPage - qualquer url não altorizado ou digitado erroneamente apresentará essa página.</li>
+  <li> Events - destinada a apresentar eventos da associação, será possivel ser alterada pelos funcionários da casa.</li>
+  <li> SmartBoard - destidada para funcionários se conectarem na API que ainda está em desenvolvimento.</li>
+</ul>  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Começando o projeto 💻
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Primeiro de tudo, vocé pode clonar este repositório em rodando
+`git clone https://github.com/Felpasw/Project-a.p.a.c.l.git`
 
-### `npm test`
+Depois, você precisará instalar todas as dependências rodando `npm i`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Após isso no diretório do projeto, vocè pode rodar:
 
-### `npm run build`
+### `npm run start`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Isso abrirá um servidor de desenvolvimento.\
+Abra [http://localhost:3000](http://localhost:3000) para ver no seu navegador.
+## Importante ⚠️
+Como é possível visualizar, o site ainda está em produção. Caso você tenha alguma sugestão de refatoração de código ou de desing por favor me contate, muito obrigado!🚀
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
