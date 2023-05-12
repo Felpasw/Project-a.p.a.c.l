@@ -75,33 +75,18 @@ export default function SmartBoard() {
 
     }
 
-    const login = {
-      Name: formValues.Name,
-      Password: formValues.Password
-    }
-
     try {
 
-      console.log(login);
-      const Response: AxiosResponse = await Axios.post('/auth/user', login);
+      const Response: AxiosResponse = await Axios.post('/auth/user', {
+        Name: formValues.Name,
+        Password: formValues.Password
+      });
       console.log(Response);
       sessionStorage.setItem("token", Response.data.token);
-
-      if (Response.status !== 200) {
-
-        toast.error(`${Response.data.msg}`);
-
-      }
-      else {
-
-        toast.success(`${Response.data.msg}`);
-        navigate("/Restricted");
-
-      }
-
+      toast.success(`${Response.data.msg}`);
+      navigate("/Restricted");
 
     } catch (error) {
-
       toast.error("Erro ao realizar login!");
       console.log(error);
 
