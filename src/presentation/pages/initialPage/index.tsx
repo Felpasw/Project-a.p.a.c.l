@@ -5,7 +5,7 @@ import PetImage from "../../assets/DogPetImage.png"
 import { motion } from 'framer-motion';
 import Footer from '../../components/Footer';
 import AboutUs from '../../components/AboutUs';
-
+import { Button } from '../../components/ButtonComponent';
 
 
 
@@ -60,32 +60,6 @@ const Titles = styled.div`
 
 `;
 
-const Button = styled.button`
-  padding: auto;
-  margin-top: 15px ;
-  align-self:center;
-  border-radius: 100px;
-  color: #ffa722;
-  font-size: 18px;
-  font-weight: 100;
-  cursor: pointer;
-  max-width: 100%;
-  width: 100px;
-  height: 60px;
-  background: transparent;
-  border: 3px solid #ffa722;
-  outline: none;
-  transition: 0.15s ease-in-out;
-  &:hover {
-    transition: 0.15s ease-in-out;
-    background: #ffa722;
-    color: #ffff;
-}
-`;
-
-
-
-
 
 export default function InitialPage() {
   return (
@@ -123,7 +97,7 @@ export default function InitialPage() {
               delay: 4,
             }}
           >
-            <Button><a href='/Contribute' style={{ "textDecoration": "none", "color": "inherit" }}> <b>Saiba mais</b></a></Button>
+            <Button ><a href='/Contribute' style={{ "textDecoration": "none", "color": "inherit" }}><b>Saiba mais</b></a></Button>
           </motion.div>
         </Titles>
         <motion.div style={{ "alignSelf": "end" }}

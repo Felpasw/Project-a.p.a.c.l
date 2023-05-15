@@ -11,7 +11,6 @@ const StyledInput = styled.input`
   &:focus{
     border-bottom: #ffa722 solid 5px;
   }
-
 `;
 
 
