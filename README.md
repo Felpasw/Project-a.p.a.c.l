@@ -13,7 +13,7 @@ Esse projeto já está em deploy no Vercel. Se você só quer ver o resultado vi
   <li> Contribute - destinada para apresentar as formas de contribuição da casa. </li>
   <li> ErrorPage - qualquer url não altorizado ou digitado erroneamente apresentará essa página.</li>
   <li> Events - destinada a apresentar eventos da associação, será possivel ser alterada pelos funcionários da casa.</li>
-  <li> SmartBoard - destidada para funcionários se conectarem na API que ainda está em desenvolvimento.</li>
+  <li> SmartBoard - destinada para funcionários se conectarem na API que ainda está em desenvolvimento.</li>
 </ul>  
 
 ## Começando o projeto 💻
