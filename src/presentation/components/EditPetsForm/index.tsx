@@ -80,10 +80,10 @@ const Img = styled.img`
 `;
 
 const zeroState = {
-  Name: "",
-  History: "",
-  Gender: "Masculino",
-  InHouseSince: ""
+  name: "",
+  history: "",
+  gender: "",
+  inHouseSince: ""
 }
 
 export default function EditPetsForm() {
@@ -119,31 +119,36 @@ export default function EditPetsForm() {
       <Title>Editar informações dos animais </Title>
 
       <InputAndLabel >
-        <label htmlFor="Name" >Nome: </label>
-        <Input type="text" onChange={handleChange} name='Name' id='Name' style={{ margin: "3%" }} />
+        <label htmlFor="name" >Nome: </label>
+        <Input type="text" onChange={handleChange} name='name' id='name' style={{ margin: "3%" }} />
       </InputAndLabel>
 
       <RadioInputs>
         Gênero <br />
-        <RadioInput type="radio" onChange={handleChange} name='Gender' id='F' value={"Feminino"} />
+        <RadioInput type="radio" onChange={handleChange} name='gender' id='F' value={"Feminino"} />
         <label htmlFor="F" >Feminino </label>
         <br />
-        <RadioInput type="radio" onChange={handleChange} name='Gender' id='M' value={"Masculino"} />
+        <RadioInput type="radio" onChange={handleChange} name='gender' id='M' value={"Masculino"} />
         <label htmlFor="M" >Masculino </label>
       </RadioInputs>
 
       <RadioInputs>
         Tipo do animal <br />
-        <RadioInput type="radio" onChange={handleChange} name='Gender' id='Cachorro' value={"Cachorro"} />
+        <RadioInput type="radio" onChange={handleChange} name='gender' id='Cachorro' value={"Cachorro"} />
         <label htmlFor="F" >Cachorro </label>
         <br />
-        <RadioInput type="radio" onChange={handleChange} name='Gender' id='Gato' value={"Gato"} />
+        <RadioInput type="radio" onChange={handleChange} name='gender' id='Gato' value={"Gato"} />
         <label htmlFor="M" >Gato </label>
       </RadioInputs>
 
       <InputAndLabel>
-        <label htmlFor="InHouseSince" >Na casa desde: </label>
-        <Input style={{ margin: "3%" }} type='date' id='InHouseSince' onChange={handleChange} />
+        <label htmlFor="inHouseSince" >Na casa desde: </label>
+        <Input style={{ margin: "3%" }} type='date' id='inHouseSince' onChange={handleChange} />
+      </InputAndLabel>
+
+      <InputAndLabel>
+        <label htmlFor="inHouseSince" >Foto do animal: </label>
+        <Input style={{ margin: "3%" }} type='file' id='inHouseSince' onChange={handleChange} />
       </InputAndLabel>
 
       <label htmlFor="History">História do animal: </label>
@@ -168,15 +173,15 @@ export default function EditPetsForm() {
                 }}
               >
                 <Img src={APACL} alt="" />
-                {element.Type === "Gato" ?
-                  <h1 style={{ "margin": "5%" }}>Conheça {element.Name}!<GiHollowCat /></h1> :
-                  <h1 style={{ "margin": "5%" }}>Conheça {element.Name}! <TbDog /></h1>
+                {element.type === "Gato" ?
+                  <h1 style={{ "margin": "5%" }}>Conheça {element.name}!<GiHollowCat /></h1> :
+                  <h1 style={{ "margin": "5%" }}>Conheça {element.name}! <TbDog /></h1>
                 }
-                {element.Gender === "Masculino" ?
-                  <h3 style={{ "margin": "5%" }}>Sexo: {element.Gender} <BsGenderMale style={{ "color": "blue" }} /></h3> :
-                  <h3 style={{ "margin": "5%" }}>Sexo: {element.Gender} <BsGenderFemale style={{ "color": "hotpink" }} /></h3>
+                {element.gender === "Masculino" ?
+                  <h3 style={{ "margin": "5%" }}>Sexo: {element.gender} <BsGenderMale style={{ "color": "blue" }} /></h3> :
+                  <h3 style={{ "margin": "5%" }}>Sexo: {element.gender} <BsGenderFemale style={{ "color": "hotpink" }} /></h3>
                 }
-                <h3 style={{ "margin": "5%", "fontFamily": "Jost" }}>Na casa desde: {element.InHouseSince}</h3>
+                <h3 style={{ "margin": "5%", "fontFamily": "Jost" }}>Na casa desde: {element.inHouseSince}</h3>
                 <Button>Editar</Button>
                 <Button>Remover</Button>
               </motion.div>

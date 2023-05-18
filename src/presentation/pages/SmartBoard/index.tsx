@@ -51,8 +51,8 @@ const Label = styled.label`
 `
 
 let zeroState = {
-  Name: '',
-  Password: ''
+  name: '',
+  password: ''
 }
 
 export default function SmartBoard() {
@@ -68,7 +68,7 @@ export default function SmartBoard() {
 
   const handleSubimmit = async (e: React.FormEvent) => {
 
-    if (!formValues.Password || !formValues.Name) {
+    if (!formValues.password || !formValues.name) {
 
       toast.error("Preencha todos os campos corretamente!");
       return;
@@ -78,8 +78,8 @@ export default function SmartBoard() {
     try {
 
       const Response: AxiosResponse = await Axios.post('/auth/user', {
-        Name: formValues.Name,
-        Password: formValues.Password
+        name: formValues.name,
+        password: formValues.password
       });
       console.log(Response);
       sessionStorage.setItem("token", Response.data.token);
@@ -100,11 +100,11 @@ export default function SmartBoard() {
       <Div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.6 }}>
         <a href="/"><Img src={APACL} /></a>
         <h1 style={{ fontFamily: 'Jost' }}>Login</h1>
-        <Label htmlFor="Name" >Usuário </Label>
-        <Input id="Name" type='text' onChange={handleChange} value={formValues.Name} name='Name' />
+        <Label htmlFor="name" >Usuário </Label>
+        <Input id="name" type='text' onChange={handleChange} value={formValues.name} name='name' />
 
-        <Label htmlFor="Password"> Senha </Label>
-        <Input id="Password" type='password' onChange={handleChange} value={formValues.Password} name='Password' />
+        <Label htmlFor="password"> Senha </Label>
+        <Input id="password" type='password' onChange={handleChange} value={formValues.password} name='password' />
 
         <div style={{ display: "flex", flexDirection: "row" }}>
           <a href="/" style={{ textDecoration: "none", color: "inherit" }}> <Button> Voltar </Button> </a>

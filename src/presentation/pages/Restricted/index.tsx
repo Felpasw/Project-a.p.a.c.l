@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import APACL from '../../assets/APACL.png'
 import EditPetsForm from '../../components/EditPetsForm';
 import EditEventsForm from '../../components/EditEventsForm';
+import { ToastContainer } from 'react-toastify';
 
 const Content = styled.div`
   display: flex;
@@ -31,13 +32,18 @@ const Img = styled.img`
 const MainContent = styled.div`
   display: flex;
   flex-direction: row;
-   margin: 5%;
-  margin-right: 10px;
-  width: 60vh;
-  margin-left: 40px;
+@media (max-width: 999px) {
+    flex-direction: column;
+}
+`;
+
+const Forms = styled.div`
+  margin: 5%;
+  width: 50vh;
   background-color: #ffff;
   align-items: center;
   border-radius: 10px;
+  margin-right: 7%;
   padding: 70px;
   
 `
@@ -50,15 +56,17 @@ export default function Restricted() {
   return (
     <Content>
       <Img src={APACL} alt="" />
+      <ToastContainer />
       <Title>Bem vindo(a) ao gerenciamento de conteúdo do site da APACL!</Title>
       <Subtitle>Qual conteúdo deseja alterar?</Subtitle>
-      <MainContent>
+      <MainContent >
         {ElementsList.map((Element) =>
-          <>
+          <Forms>
             {Element}
-          </>
+          </Forms>
         )}
       </MainContent>
+
     </Content>
   )
 }

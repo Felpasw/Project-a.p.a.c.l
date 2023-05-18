@@ -1,11 +1,11 @@
 type Gender = "Masculino" | "Feminino";
 
 export default interface Pet {
-  Type: string;
+  type: string;
   _id: string;
-  Name: string,
-  History?: string,
-  Gender: Gender,
-  InHouseSince?: string
+  name: string,
+  history?: string,
+  gender: Gender,
+  inHouseSince?: string
 }
 
