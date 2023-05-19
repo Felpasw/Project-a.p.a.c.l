@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import Footer from '../../components/Footer';
 import AboutUs from '../../components/AboutUs';
 import { Button } from '../../components/ButtonComponent';
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -65,6 +66,7 @@ export default function InitialPage() {
   return (
     <>
       <Navbar />
+      <ToastContainer />
       <Div>
         <Titles style={{ "margin": "auto" }}>
           <motion.div style={{ "alignSelf": "center", "marginLeft": "40px" }}

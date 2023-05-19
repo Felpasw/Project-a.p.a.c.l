@@ -32,6 +32,10 @@ const Img = styled.img`
 const MainContent = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  align-self: center;
+  width: 100%;
+  
 @media (max-width: 999px) {
     flex-direction: column;
 }
@@ -43,10 +47,8 @@ const Forms = styled.div`
   background-color: #ffff;
   align-items: center;
   border-radius: 10px;
-  margin-right: 7%;
-  padding: 70px;
-  
-`
+  padding: 10vh;
+  `;
 
 const ElementsList = [<EditPetsForm />, <EditEventsForm />]
 

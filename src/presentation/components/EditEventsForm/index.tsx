@@ -15,7 +15,7 @@ const TextArea = styled.textarea`
   width: 52vh;
   height: 300px;
   resize: none;
-  border-radius: 10px ;
+  border-radius: 10px;
 `;
 
 const Title = styled.h4`
@@ -114,7 +114,7 @@ function ShowEventsAlreadyCreated(props: { element: Events }) {
 
       <div style={{ margin: "5%" }}>
         <h2>Título: </h2>
-        <Input type="text" value={formValues.title} onChange={handleChange} name='title' id='title' />
+        <Input type="text" value={formValues.title} onChange={handleChange} name='title' id='title' placeholder='ex: Doação de animais, Evento de arrecadação' />
         <h2>Sobre: </h2>
         <TextArea value={formValues.about} onChange={handleChange} name='about' id='about' />
         <h2>Data: </h2>
@@ -156,7 +156,7 @@ export default function EditEventsForm() {
 
   useEffect(() => {
     getEvents();
-  }, [Events])
+  })
 
   const getEvents = async () => {
     const Events = await Axios.get('/Events').then((response: { data: React.SetStateAction<Events[]>; }) => setEvents(response.data));
@@ -172,7 +172,27 @@ export default function EditEventsForm() {
     setFormValues({ ...formValues, [name]: value })
   }
 
-  const handleSubimit = () => {
+  const handleSubimit = async () => {
+    try {
+      if (!formValues.title) { toast.error("Título não pode ficar em branco"); return; }
+      if (!formValues.date) { toast.error("Data não pode ficar em branco"); return }
+      if (!formValues.location) { toast.error("Localização não pode ficar em branco"); return }
+      if (Date.parse(formValues.date) < Date.now()) { toast.error("Data inválida!"); return }
+      if (!formValues.about) { toast.error("Sobre o evento não pode ficar em branco"); return }
+
+      await Axios.post("/Events", {
+        title: formValues.title,
+        date: formValues.date,
+        location: formValues.location,
+        about: formValues.about
+      })
+      toast.success("Evento criado com sucesso!")
+
+    } catch (error) {
+      toast.error(`Erro ao criar evento!`)
+      console.log(error)
+    }
+
   }
 
 
@@ -183,7 +203,7 @@ export default function EditEventsForm() {
 
       <InputAndLabel >
         <label htmlFor="name" >Título do evento: </label>
-        <Input type="text" onChange={handleChange} name='title' id='title' style={{ margin: "3%" }} />
+        <Input type="text" onChange={handleChange} name='title' id='title' style={{ margin: "3%" }} placeholder='ex: Doação de animais, Evento de arrecadação' />
       </InputAndLabel>
 
       <InputAndLabel>
@@ -193,11 +213,11 @@ export default function EditEventsForm() {
 
       <InputAndLabel>
         <label htmlFor="location" >Localização: </label>
-        <Input style={{ margin: "3%" }} type='localização' id='location' name='location' onChange={handleChange} />
+        <Input style={{ margin: "3%" }} type='localização' id='location' name='location' onChange={handleChange} placeholder='ex: Parque Barigui, Parque Tanguá ' />
       </InputAndLabel>
 
-      <label htmlFor="History">Sobre o evento: </label>
-      <TextArea onChange={handleChange} name='History' id='History' />
+      <label htmlFor="about">Sobre o evento: </label>
+      <TextArea onChange={handleChange} name='about' id='about' placeholder='Digite aqui informações essenciais para o evento, curiosidades e adiversidades' />
       <Button onClick={handleSubimit}> Adicionar </Button>
 
 
