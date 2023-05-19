@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Events from '../../../@types/Events';
 import { Axios } from '../../config/axios';
 import { toast } from 'react-toastify';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const Div = styled.div`
   display: flex;
@@ -24,6 +25,11 @@ const Title = styled.h4`
   max-width: 100%;
  color: #ffa722;
 `;
+
+const DivButton = styled(motion.div)`
+  
+`
+
 
 const Button = styled.button`
   padding: auto;
@@ -52,57 +58,20 @@ const InputAndLabel = styled.div`
   flex-direction: column;
 `;
 
-const zeroState = {
-  _id: "",
-  title: "",
-  about: "",
-  date: "",
-  location: ""
-}
 
-function ShowSaveButton(props: { element: Events }) {
+
+function ShowEventsAlreadyCreated(props: { element: Events }) {
+  const zeroState = {
+    _id: props.element._id,
+    title: props.element.title,
+    about: props.element.about,
+    date: props.element.date,
+    location: props.element.location
+  }
+
   const [isChanged, setIsChanged] = useState(false);
-  return (
-    <div style={{ margin: "5%" }}>
-      <h2>Título: </h2>
-      <Input type="text" value={props.element.title} onChange={() => setIsChanged(true)} />
-      <h2>Sobre: </h2>
-      <Input type="text" value={props.element.about} />
-      <h2>Data: </h2>
-      <Input type="text" value={props.element.date} />
-      <h2>Localização: </h2>
-      <Input type="text" value={props.element.location} />
-      {
-        isChanged && <Button>Salvar alterações</Button>
-      }
-    </div>
-  )
-
-
-}
-
-export default function EditEventsForm() {
   const [formValues, setFormValues] = useState(zeroState);
-  const [Events, setEvents] = useState([] as Events[]);
 
-  const handleChange = (e: { target: { name: string; value: string; }; }): void => {
-    let name = e.target.name;
-    let value = e.target.value;
-    setFormValues({ ...formValues, [name]: value })
-  }
-
-  useEffect(() => {
-    getEvents();
-  })
-
-  const getEvents = async () => {
-    const Events = await Axios.get('/Events').then((response: { data: React.SetStateAction<Events[]>; }) => setEvents(response.data));
-    return Events;
-  }
-
-  const handleSubimit = () => {
-    console.log(Events)
-  }
 
   const handleRemove = async (_id: string, title: string) => {
     if (window.confirm(`Deseja realmente remover evento ${title}?`)) {
@@ -113,12 +82,97 @@ export default function EditEventsForm() {
 
       } catch (error) {
 
-        toast.error("Erro ao apagar evento!");
+        toast.error("Erro ao remover evento!");
         console.log(error);
 
       }
 
     }
+  }
+
+  const handleChange = (e: { target: { name: string; value: string; }; }): void => {
+    let name = e.target.name;
+    let value = e.target.value;
+    setFormValues({ ...formValues, [name]: value })
+    if (props.element === formValues) {
+      setIsChanged(false)
+    }
+    else {
+      setIsChanged(true)
+    }
+    console.log(isChanged)
+  }
+
+  const handlePut = () => {
+
+  }
+
+
+  return (
+    <>
+      <Title>Lista de eventos já cadastrados</Title>
+
+      <div style={{ margin: "5%" }}>
+        <h2>Título: </h2>
+        <Input type="text" value={formValues.title} onChange={handleChange} name='title' id='title' />
+        <h2>Sobre: </h2>
+        <TextArea value={formValues.about} onChange={handleChange} name='about' id='about' />
+        <h2>Data: </h2>
+        <Input type="date" value={formValues.date} onChange={handleChange} name='date' id='date' />
+        <h2>Localização: </h2>
+        <Input type="text" value={formValues.location} onChange={handleChange} name='location' id='location' />
+        <Button onClick={() => handleRemove(props.element._id, props.element.title)}> Remover </Button>
+        <AnimatePresence>
+          {
+            isChanged &&
+            <DivButton
+            >
+              <Button onClick={() => handlePut}>Salvar alterações</Button>
+            </DivButton>
+          }
+        </AnimatePresence>
+
+      </div>
+
+    </>
+  )
+
+}
+
+
+
+
+export default function EditEventsForm() {
+
+  const zeroState = {
+    _id: "",
+    title: "",
+    about: "",
+    date: "",
+    location: ""
+  }
+  const [Events, setEvents] = useState([] as Events[]);
+  const [formValues, setFormValues] = useState(zeroState);
+
+  useEffect(() => {
+    getEvents();
+  }, [Events])
+
+  const getEvents = async () => {
+    const Events = await Axios.get('/Events').then((response: { data: React.SetStateAction<Events[]>; }) => setEvents(response.data));
+    return Events;
+  }
+
+
+
+
+  const handleChange = (e: { target: { name: string; value: string; }; }): void => {
+    let name = e.target.name;
+    let value = e.target.value;
+    setFormValues({ ...formValues, [name]: value })
+  }
+
+  const handleSubimit = () => {
   }
 
 
@@ -147,14 +201,10 @@ export default function EditEventsForm() {
       <Button onClick={handleSubimit}> Adicionar </Button>
 
 
-      <Title>Lista de eventos já cadastrados</Title>
       {
-        Events.map((element) =>
-          <ShowSaveButton element={element} />
+        Events.map((element: Events) =>
+          <ShowEventsAlreadyCreated element={element} />
         )}
-
-
-
 
 
     </Div >
