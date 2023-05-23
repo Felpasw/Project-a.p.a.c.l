@@ -7,5 +7,6 @@ export default interface Pet {
   history?: string,
   gender: Gender,
   inHouseSince?: string
+  urlImage: string
 }
 

@@ -6,10 +6,10 @@ import { Input } from '../../components/InputComponent';
 import { useState } from 'react';
 import { AxiosResponse } from 'axios';
 
-import { Axios } from '../../config/axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import { Axios } from '../../config/axios';
 
 
 const Img = styled.img`
@@ -56,7 +56,7 @@ let zeroState = {
 }
 
 export default function SmartBoard() {
-  const [formValues, setFormValues] = useState(zeroState);
+  const [formValues, setFormValues]: any = useState(zeroState);
   const navigate = useNavigate();
 
   const handleChange = (e: { target: { name: string; value: string; }; }): void => {
@@ -77,14 +77,13 @@ export default function SmartBoard() {
 
     try {
 
-      const Response: AxiosResponse = await Axios.post('/auth/user', {
-        name: formValues.name,
-        password: formValues.password
-      });
-      console.log(Response);
+
+      const Response: AxiosResponse = await Axios.post(`/auth/user`, formValues);
       sessionStorage.setItem("token", Response.data.token);
       toast.success(`${Response.data.msg}`);
-      navigate("/Restricted");
+
+      setTimeout(() => { navigate("/Restricted"); }, 2000);
+
 
     } catch (error) {
       toast.error("Erro ao realizar login!");

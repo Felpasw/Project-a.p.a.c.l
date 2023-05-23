@@ -27,7 +27,7 @@ Axios.interceptors.response.use(
     if (error.response.status === 401) {
 
       toast.error("Erro de requisição. Nova autenticação necessária");
-      setTimeout(() => { window.location.href = "/" }, 3000);
+      setTimeout(() => { window.location.href = "/SmartBoard" }, 3000);
 
     }
     return Promise.reject(error);
