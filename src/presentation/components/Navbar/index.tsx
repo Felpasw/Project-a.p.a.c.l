@@ -60,10 +60,9 @@ export default function Navbar() {
   return (
     <S.Nav>
       <a href="/">
-        <S.Img src={apaclLogoImage} />{' '}
+        <S.Img src={apaclLogoImage} />
       </a>
       <S.Logo>
-        {' '}
         A.P.A.C.L
         <MdOutlinePets />
       </S.Logo>
@@ -105,8 +104,7 @@ export default function Navbar() {
                 }}
               >
                 <S.NavItem href={element.Link} target={element.Target}>
-                  {' '}
-                  {element.Content}{' '}
+                  {element.Content}
                 </S.NavItem>
               </S.NavItems>
             ))}
@@ -120,8 +118,7 @@ export default function Navbar() {
             changeMobileMenuVisibility();
           }}
         >
-          {' '}
-          <TfiMenu />{' '}
+          <TfiMenu />
         </S.MobileMenu>
       </motion.div>
     </S.Nav>

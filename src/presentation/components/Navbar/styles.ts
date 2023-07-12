@@ -9,6 +9,7 @@ export const Nav = styled.nav`
     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background-color: #23232e;
   width: 100%;
+  max-width: 100%;
   position: fixed;
   z-index: 1;
 `;
@@ -52,7 +53,6 @@ export const Logo = styled.div`
   text-transform: uppercase;
   letter-spacing: 4px;
   color: #ffff;
-  padding-right: 6ch;
   position: relative;
   right: auto;
 `;

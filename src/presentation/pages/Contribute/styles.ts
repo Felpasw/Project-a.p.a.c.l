@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Subtitle = styled.h1`
   align-self: center;
   max-width: 100%;
-  font-size: 7vh;
+  font-size: 6vh;
   align-self: center;
   font-family: 'Jost', sans-serif;
   color: #ffa722;
@@ -30,6 +30,14 @@ export const Img = styled.img`
   margin-right: 5%;
   @media (max-width: 999px) {
     margin-bottom: -10%;
+  }
+`;
+
+export const MobileContent = styled.div`
+  display: none;
+  @media (max-width: 999px) {
+    display: flex;
+    flex-direction: column;
   }
 `;
 
@@ -101,6 +109,9 @@ export const Content = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
+  @media (max-width: 999px) {
+    display: none;
+  }
 `;
 
 export const CatImage = styled.img`

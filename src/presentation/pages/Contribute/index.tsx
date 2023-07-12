@@ -143,6 +143,10 @@ export default function Contribute() {
         <S.Subtitle>Formas de contribuição: </S.Subtitle>
       </S.ContributeWaysSubtitle>
 
+      <S.MobileContent>
+        {Arr.map((element) => [<>{element}</>])}
+      </S.MobileContent>
+
       <S.Content>
         <S.Icons onClick={() => changeElement(-1, false)}>
           <S.IconText>
